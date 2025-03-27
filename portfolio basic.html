@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio basic.css">
+    <title>Basic Portfolio</title>
+</head>
+<body>
+    <main>
+        <nav id="navbar">
+                <div class="menu-icon" id="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul id="nav-links">
+                <li><a href="#intro-section" class="navbars">Home</a></li>
+                <li><a href="#about-section" class="navbars">About</a></li>
+                <li><a href="#skills-section" class="navbars">Skills</a></li>
+                <li><a href="#project-section" class="navbars">Projects</a></li>
+                <li><a href="#contact-section" class="navbars">Contact</a></li>
+            </ul>
+        </nav>
+        
+
+        <section id="intro-section" class="section visible">
+            <div class="intro-container">
+                <video autoplay muted loop id="background-video">
+                    <source src="./Video/intro section.mp4" type="video/mp4">
+                </video>
+                <!-- Parallax background -->
+                <div class="intro-parallax">
+                    <img src="./Images/My bio.png" alt="Your Image" class="intro-image">
+                </div>
+                <!-- Content -->
+                <div class="intro-text">
+                    <div class="intro-name"></div>
+                    <div class="intro-position"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-section" class="section">
+            <div class="about-container">
+                <!-- Tekst po lewej stronie -->
+                <div class="left-side">
+                    <p>Witam!</p>
+                    <p>Jestem Konrad.</p>
+                    <p>Jestem programistą i pasjonatem technologii.</p>
+                </div>
+        
+                <!-- Tekst po prawej stronie -->
+                <div class="right-side">
+                    <p>Szkolę się na Frontend Developera / Programistę JavaScript.</p>
+                    <p>Tworzę projekty, które łączą technologię i design.</p>
+                    <p>Pasjonuje mnie tworzenie przyjaznych dla użytkownika i innowacyjnych aplikacji webowych.</p>
+                </div>
+            </div>
+        </section>
+    
+        <section id="skills-section" class="section">
+            <div class="section-heading">
+                Moje Umiejętności
+            </div>
+            <div class="skills-container">
+                <div class="skill-information">
+                    <p> <i class="fab fa-html5 fa-3x fa-beat"></i> </p>
+                    <p class="skill-name">HTML5</p>
+                    <progress value="95" max="100"></progress>
+                </div>
+                <div class="skill-information">
+                    <p> <i class="fab fa-css3 fa-3x fa-beat"></i> </p>
+                    <p class="skill-name">CSS3</p>
+                    <progress value="95" max="100"></progress>
+                </div>
+                <div class="skill-information">
+                    <p> <i class="fab fa-js fa-3x fa-beat"></i> </p>
+                    <p class="skill-name">JavaScript</p>
+                    <progress value="90" max="100"></progress>
+                </div>
+                <div class="skill-information">
+                    <p> <i class="fab fa-react fa-3x fa-beat"></i> </p>
+                    <p class="skill-name">React</p>
+                    <progress value="75" max="100"></progress>
+                </div>
+                <div class="skill-information">
+                    <p> <i class="fab fa-angular fa-3x fa-beat"></i> </p>
+                    <p class="skill-name">Angular</p>
+                    <progress value="60" max="100"></progress>
+                </div>
+                <div class="skill-information">
+                    <p> <i class="fab fa-bootstrap fa-3x fa-beat"></i> </p>
+                    <p class="skill-name">Bootstrap</p>
+                    <progress value="60" max="100"></progress>
+                </div>
+                <div class="skill-information">
+                    <p> <i class="fab fa-sass fa-3x fa-beat"></i> </p>
+                    <p class="skill-name">Sass</p>
+                    <progress value="70" max="100"></progress>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-section" class="section project-section">
+            <!-- Kontener projektów --> 
+            <div class="projects-container">
+                <!-- Sekcja nagłówka i opisu -->
+                <div class="text-container">
+                    <h1 class="section-heading-2">My Projects</h1>
+                    <p class="section-description">
+                        Poznaj niektóre z moich najlepszych prac w zakresie tworzenia i projektowania stron internetowych, prezentując kreatywność i wiedzę techniczną.
+                    </p>
+                </div>
+                <!-- Projekty -->
+                <div class="image-box" onclick="openModal('ExoraGYM', './Images/Obraz EXORAGYM.webp', 'This project is a gym management system.', 'http://127.0.0.1:5500/Projects/ExoraGYM/exora_gym_index.html')">
+                    <img src="./Images/Obraz EXORAGYM.webp" alt="ExoraGYM" class="project-image">
+                    <div class="project-title">ExoraGYM</div>
+                </div>
+        
+                <div class="image-box" onclick="openModal('Cyber Security', 'https://cdn.pixabay.com/photo/2017/09/22/18/11/cyber-security-2776600_1280.jpg', 'A security-focused project using advanced encryption techniques.', 'http://127.0.0.1:5500/Projects/ExoraGYM/exora_gym_index.html')">
+                    <img src="https://cdn.pixabay.com/photo/2017/09/22/18/11/cyber-security-2776600_1280.jpg" alt="Cyber Security" class="project-image">
+                    <div class="project-title">Cyber Security</div>
+                </div>
+        
+                <div class="image-box" onclick="openModal('Drapacz Chmur', 'https://cdn.pixabay.com/photo/2021/02/11/04/58/skyscrapers-6004218_1280.jpg', 'A skyscraper management project with dynamic floor management.', 'https://example.com/drapaczchmur')">
+                    <img src="https://cdn.pixabay.com/photo/2021/02/11/04/58/skyscrapers-6004218_1280.jpg" alt="Drapacz Chmur" class="project-image">
+                    <div class="project-title">Drapacz Chmur</div>
+                </div>
+        
+                <div class="image-box" onclick="openModal('Social Media', 'https://cdn.pixabay.com/photo/2019/09/09/08/23/internet-4463031_1280.jpg', 'A social media application with advanced user interaction features.', 'https://example.com/socialmedia')">
+                    <img src="https://cdn.pixabay.com/photo/2019/09/09/08/23/internet-4463031_1280.jpg" alt="Social Media" class="project-image">
+                    <div class="project-title">Social Media</div>
+                </div>
+        
+                <div class="image-box" onclick="openModal('Portale Społecznościowe', 'https://cdn.pixabay.com/photo/2015/12/11/09/30/mobile-phone-1087845_1280.jpg', 'A portal focused on social connections with a mobile-first approach.', 'https://example.com/portalespolecznosciowe')">
+                    <img src="https://cdn.pixabay.com/photo/2015/12/11/09/30/mobile-phone-1087845_1280.jpg" alt="Portale Społecznościowe" class="project-image">
+                    <div class="project-title">Portale Społecznościowe</div>
+                </div>
+            </div>
+                
+        <!-- Modal -->
+        <div id="project-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="modal-title"></h2>
+                <!-- Dodanie linku do obrazka -->
+                <a id="modal-link" href="#" target="_blank">
+                    <img id="modal-image" src="" alt="Project Image" class="modal-image">
+                </a>
+                    <p id="modal-description"></p>
+                    <div id="modal-technologies" class="technologies"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-section" class="section">
+            <!-- Kontener dla wideo -->
+            <div class="video-container">
+                <video autoplay loop muted>
+                    <source src="./Video/10822-226624975_small.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        
+            <div class="contact-header">
+                <h1 class="section-heading-3">Let's Work Together</h1>
+                <p>Find me on:</p>
+            </div>
+        
+            <!-- https://fontawesome.com/ czcionki -->
+            <div class="contact-links">
+                <a href="https://github.com/" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i> Github
+                </a>
+                <a href="https://www.linkedin.com/in/konrad-b%C4%85czek/" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin-in"></i> Linkedin
+                </a>
+                <a href="mailto: qndziulek@gmail.com" target="_blank" class="contact-link">
+                    <i class="fas fa-envelope-square"></i> Email
+                </a>
+
+                <a href="tel:+48821823433" target="_blank" class="contact-link">
+                    <i class="fa fa-phone"></i> Telefon
+                </a>
+            </div>
+
+            <!-- Przycisk Scroll to Top -->
+            
+        </section>
+        <button id="scroll-to-top" class="scroll-to-top">↑</button> 
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
