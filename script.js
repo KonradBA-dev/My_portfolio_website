@@ -38,6 +38,33 @@ function highlightActiveLink() {
 window.addEventListener('scroll', highlightActiveLink);
 highlightActiveLink();
 
+// Funkcja do generowania kropek w tle
+document.addEventListener('DOMContentLoaded', function() {
+    generateDots(50);
+});
+
+function generateDots(num) {
+    const introBackground = document.querySelector('.intro-background');
+    
+    // Dodajemy określoną liczbę kropek
+    for (let i = 0; i < num; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+  
+        // Losowo generujemy pozycje dla każdej kropki
+        const top = Math.random() * 100; // Pozycja w pionie (od 0% do 100%)
+        const left = Math.random() * 100; // Pozycja w poziomie (od 0% do 100%)
+        const delay = Math.random() * 5; // Opóźnienie animacji dla każdej kropki
+  
+        dot.style.top = `${top}%`;
+        dot.style.left = `${left}%`;
+        dot.style.animationDelay = `${delay}s`;
+  
+        // Dodajemy kropkę do tła
+        introBackground.appendChild(dot);
+    }
+}
+
 // Funkcja obsługująca widoczność sekcji About
 function handleAboutSection() {
     const aboutContainer = document.querySelector('.about-container');

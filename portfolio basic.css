@@ -10,6 +10,7 @@ body {
     height: 100%;
     font-family: 'Arial', sans-serif;
     line-height: 1.6; 
+    background: linear-gradient(180deg, #34D399, #6C63FF); /* Gradient w odcieniach bieli */
 } 
 
 html {
@@ -142,6 +143,62 @@ section {
     }
 }
 
+/* Podstawowy styl tła */
+.intro-background {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Cała wysokość sekcji */
+    background: linear-gradient(135deg, #34D399 25%, #0066cc 75%); /* Kolor tła */
+    overflow: hidden;
+  }
+  
+  /* Tworzymy linie, które będą poruszały się po ekranie */
+  .intro-background .line {
+    position: absolute;
+    width: 200%;
+    height: 2px; /* Grubość linii */
+    background: rgba(255, 255, 255, 0.5); /* Kolor linii */
+    top: 50%;
+    left: -50%;
+    animation: moveLine 5s linear infinite;
+  }
+  
+  /* Animacja dla poruszających się linii */
+  @keyframes moveLine {
+    0% {
+      transform: translateX(-100%); /* Zaczynają z lewej strony */
+    }
+    100% {
+      transform: translateX(100%); /* Przemieszczają się na prawą stronę */
+    }
+  }
+  
+  /* Animacja dla kropek */
+  @keyframes dotAnimation {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) translateX(0) translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5) translateX(20px) translateY(-20px);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.5) translateX(-20px) translateY(20px);
+    }
+  }
+  
+  /* Domyślny styl dla kropek */
+  .dot {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: dotAnimation 2s linear infinite;
+  }
+
 /* Efekt scrolla */
 #navbar.scrolled {
     background: linear-gradient(90deg, rgba(245, 245, 245, 1) 0%, rgba(235, 235, 235, 1) 100%);
@@ -156,7 +213,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('./Video/intro\ section.mp4') no-repeat center center/cover; /* Dodane tło */
+    background: url('./Video/intro\ section.mp4');
     background-size: cover;
     color: white;
     text-align: center;
@@ -228,7 +285,7 @@ section {
     max-width: 100%;
     z-index: 2;
     margin-top: 100px;
-    background: linear-gradient(to bottom, #c5bedd 50%, #c2b280  50%); /* Niebieski do czerwonego */
+    background: linear-gradient(to bottom, #090645 50%, #50e3c2  50%);
     -webkit-background-clip: text;
     color: transparent; /* Kolor tekstu jest transparentny, aby gradient był widoczny */
 }
@@ -560,12 +617,12 @@ SEKCJA SKILL
 
 .fa-beat {
     animation: pulseIcon 1.5s ease-in-out infinite; /* Dodanie pulsowania dla ikon */
-    color: #FFD700; /* Kolor początkowy */
+    color: #8B5CF6; /* Kolor początkowy */
 }
 
 .fa-beat:hover {
-    color: #a92821; /* Kolor przy hover */
-    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; /* Efekt świetlny */
+    color: #34D399; /* Kolor przy hover */
+    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6; /* Efekt świetlny */
 }
 
 /* Animacja dla progress */
@@ -587,12 +644,12 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-    background-color: #f3f3f3;
+    background-color: #8B5CF6;
     border-radius: 5px;
 }
 
 progress::-webkit-progress-value {
-    background-color: #4caf50;
+    background-color: #34D399;
     border-radius: 5px;
 }
 
@@ -620,16 +677,16 @@ progress::-webkit-progress-value {
     font-weight: bold;
     text-align: center;
     animation: oscillateSkillName 1.5s ease-in-out infinite;
-    color: #FFD700; /* Jasno złoty kolor */
+    color: #34D399; /* Jasno złoty kolor */
     display: inline-block;
     margin-top: 10px;
     letter-spacing: 1px;
-    text-shadow: 0 0 10px #c52118, 0 0 20px #c52118; /* Efekt świetlny */
+    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6; /* Efekt świetlny */
 }
 
 .skill-name:hover {
-    color: #a92821;
-    text-shadow: 0 0 15px #FFD700, 0 0 25px #FFD700;
+    color: #8B5CF6;
+    text-shadow: 0 0 15px #34D399, 0 0 25px #34D399;
 }
 
 /* Wideo w tle */
@@ -637,7 +694,7 @@ progress::-webkit-progress-value {
     position: relative;
     padding-top: 0;
     z-index: 1;
-    background-color: #0c13db;
+    background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png);
 }
 
 .skills-container {
@@ -667,11 +724,11 @@ progress::-webkit-progress-value {
 }
 
 .section-heading {
-    color: #FFD700;
-    text-shadow: 0 0 10px #c52118, 0 0 20px #c52118;
+    color: #34D399;
+    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6;
     position: absolute;
     top: 20%;
-    left: 45%;
+    left: 50%;
     transform: translateX(-50%);
     animation: oscillate 1s ease-in-out infinite;
     font-size: 2rem;
@@ -701,7 +758,6 @@ SECTION PROJECTS
 .project-section {
     padding: 50px 20px;
     text-align: center;
-    background: linear-gradient(180deg, #ffffff, #f7f7f7); /* Gradient w odcieniach bieli */
     border-radius: 20px; /* Zaokrąglone rogi */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Delikatny cień dla całego kontenera */
     border-radius: 15px;
