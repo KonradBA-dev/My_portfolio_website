@@ -71,10 +71,10 @@ section {
     transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-#navbar ul li a:hover {
-    color: hsl(243, 100%, 69%);
-    opacity: 1;
-    text-decoration: none;
+.navbars.active {
+    color: #090645 !important;
+    text-shadow: 0 0 10px rgba(51, 71, 255, 0.7), 0 0 20px rgba(25, 214, 198, 0.6); /* Poświata */
+    padding: 5px 10px;
 }
 
 #navbar ul li a::after {
@@ -90,6 +90,12 @@ section {
 
 #navbar ul li a:hover::after {
     width: 100%;
+}
+
+#navbar ul li a:hover {
+    color: #090645;
+    opacity: 1;
+    text-decoration: none;
 }
 
 /* Hamburger menu icon styles */

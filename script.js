@@ -9,6 +9,35 @@ function isSectionInView(section, offset = 0) {
     return sectionTop <= windowHeight && sectionBottom >= 0;
 }
 
+// Funkcja, która sprawdza, która sekcja jest widoczna
+function highlightActiveLink() {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.navbars');
+
+    let currentSection = '';
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (window.scrollY >= sectionTop - sectionHeight / 3 && window.scrollY < sectionTop + sectionHeight - sectionHeight / 3) {
+            currentSection = section.id
+        }
+    });
+    
+    // Podświetlenie aktywnego linku
+    navLinks.forEach((link) => {
+        link.classList.remove('active'); // Usuwamy klasę active ze wszystkich linków
+        
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active') // Dodajemy klasę active do aktywnego linku
+        }
+    });
+}
+
+window.addEventListener('scroll', highlightActiveLink);
+highlightActiveLink();
+
 // Funkcja obsługująca widoczność sekcji About
 function handleAboutSection() {
     const aboutContainer = document.querySelector('.about-container');
@@ -170,3 +199,5 @@ window.addEventListener('scroll', () => {
 document.getElementById('scroll-to-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+
