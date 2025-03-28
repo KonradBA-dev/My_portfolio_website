@@ -10,14 +10,14 @@ body {
     height: 100%;
     font-family: 'Arial', sans-serif;
     line-height: 1.6; 
-    background: linear-gradient(180deg, #34D399, #6C63FF); /* Gradient w odcieniach bieli */
-} 
+}
 
 html {
     height: 100%;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Blokuje przewijanie w poziomie */
 }
 
 /* Sekcje */
@@ -148,8 +148,10 @@ section {
     position: relative;
     width: 100%;
     height: 100vh; /* Cała wysokość sekcji */
-    background: linear-gradient(135deg, #34D399 25%, #0066cc 75%); /* Kolor tła */
-    overflow: hidden;
+    background: url(./Images/65a37611-519d-48e2-be10-7883600f49fc.png) /* Kolor tła */;
+    background-size: cover; /* Obraz wypełnia całą sekcję, ale może być przycięty */
+    background-position: center; /* Ustawia obraz na środku sekcji */
+    background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
   }
   
   /* Tworzymy linie, które będą poruszały się po ekranie */
@@ -226,12 +228,12 @@ section {
 .intro-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh; /* Zajmuje cały ekran */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    justify-content: center;
     padding: 0 20px; /* Dodaj padding, aby tekst nie dotykał krawędzi */
 }
 
@@ -247,7 +249,7 @@ section {
 }
 
 .intro-image {
-    width: 100%;
+    max-width: 100vw; /* Ograniczenie szerokości */
     height: auto;
     object-fit: cover;
     object-position: center;
@@ -395,14 +397,23 @@ section {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
 }
 
+/* Widoczność sekcji po przewinięciu */
 .section.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Stylizacja wskaźnika przewijania */
+#scroll-down-indicator {
+    margin-top: 20px;
+    animation: bounce 1.5s infinite;
+    cursor: pointer;
+}
+
 
 /* Nagłówek sekcji */
 .section-heading {
@@ -692,9 +703,10 @@ progress::-webkit-progress-value {
 /* Wideo w tle */
 #skills-section {
     position: relative;
-    padding-top: 0;
-    z-index: 1;
     background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png);
+    background-size: cover; /* Obraz wypełnia całą sekcję, ale może być przycięty */
+    background-position: center; /* Ustawia obraz na środku sekcji */
+    background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
 }
 
 .skills-container {
@@ -755,12 +767,11 @@ SECTION PROJECTS
 */ 
 
 /* Sekcja projektów */
-.project-section {
+#project-section {
     padding: 50px 20px;
     text-align: center;
-    border-radius: 20px; /* Zaokrąglone rogi */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Delikatny cień dla całego kontenera */
-    border-radius: 15px;
+    height: 100%;
 }
 
 /* Tekst nad projektami */
@@ -783,7 +794,7 @@ SECTION PROJECTS
     color: #555;
     max-width: 800px;
     margin: 0 auto; /* Wyśrodkowanie tekstu */
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 /* Kontener projektów */
@@ -794,6 +805,7 @@ SECTION PROJECTS
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
+    height: 100%;
 }
 
 /* Box z projektem */
@@ -866,7 +878,7 @@ SECTION PROJECTS
 .modal {
     display: none;
     position: fixed;
-    z-index: 10;
+    z-index: 60;
     left: 0;
     top: 0;
     width: 100%;
@@ -1050,23 +1062,10 @@ SECTION PROJECTS
     position: relative;
     padding: 80px 20px;
     animation: slideInFromBottom 1s ease-out;
-    background-color: rgba(244, 244, 244, 0.7); /* Semi-transparent background */
-}
-
-/* Wideo tło */
-#contact-section .video-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-#contact-section .video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background: url(./Images/background_contact_section.png);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 
 /* Animacja sekcji - wjeżdżanie od dołu */

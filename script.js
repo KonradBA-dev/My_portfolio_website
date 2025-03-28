@@ -35,7 +35,6 @@ function highlightActiveLink() {
     });
 }
 
-window.addEventListener('scroll', highlightActiveLink);
 highlightActiveLink();
 
 // Funkcja do generowania kropek w tle
@@ -153,8 +152,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Nasłuchujemy na zdarzenie scrollowania (tylko jeden nasłuchiwacz)
-window.addEventListener('scroll', handleScroll); // Zamiast dwóch oddzielnych nasłuchiwaczy, używamy tylko jednego
+window.addEventListener('scroll', () => {
+    highlightActiveLink();
+    handleScroll();
+});
 
 // Uruchomienie funkcji przy ładowaniu strony, aby sekcje mogły być widoczne, jeśli już znajdują się w widoku
 window.addEventListener('load', () => {
