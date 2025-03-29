@@ -255,6 +255,22 @@ section {
     object-position: center;
     border-radius: 50%; /* Dodaj zaokrąglenie do zdjęcia */
     transition: transform 0.2s ease-out;
+#typing-text {
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid;
+    padding-right: 5px;
+    animation: blink 0.7s infinite step-end;
+    color: #34D399;
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
 }
 
 /* Animacja efektu typu "parallax" */
@@ -406,14 +422,20 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+    #typing-text {
+        font-size: 1.1rem;
+    }
 
 /* Stylizacja wskaźnika przewijania */
 #scroll-down-indicator {
     margin-top: 20px;
     animation: bounce 1.5s infinite;
     cursor: pointer;
+    .text-content p {
+        font-size: 1rem;
 }
 
+----
 
 /* Nagłówek sekcji */
 .section-heading {
@@ -422,6 +444,9 @@ section {
     text-align: center;
     margin-bottom: 40px;
 }
+----
+----
+*/ 
 
 /* Styl ogólnego kontenera about-container */
 .about-container {
@@ -475,8 +500,6 @@ section {
 .left-side p:nth-child(3) {
     animation-delay: 0.9s; /* Opóźnienie dla trzeciego akapitu */
 }
-
-
 
 /* Tekst po prawej stronie */
 .right-side p {
@@ -706,7 +729,8 @@ progress::-webkit-progress-value {
     background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png);
     background-size: cover; /* Obraz wypełnia całą sekcję, ale może być przycięty */
     background-position: center; /* Ustawia obraz na środku sekcji */
-    background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
+    height: 100vh;
+    background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png) no-repeat center center/cover;
 }
 
 .skills-container {
@@ -771,7 +795,7 @@ SECTION PROJECTS
     padding: 50px 20px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Delikatny cień dla całego kontenera */
-    height: 100%;
+    height: 110vh;
 }
 
 /* Tekst nad projektami */
@@ -1065,7 +1089,8 @@ SECTION PROJECTS
     background: url(./Images/background_contact_section.png);
     background-size: cover; 
     background-position: center; 
-    background-repeat: no-repeat; 
+    height: 100vh;
+    background: url(./Images/background_contact_section.png) no-repeat center center/cover;
 }
 
 /* Animacja sekcji - wjeżdżanie od dołu */
@@ -1089,6 +1114,9 @@ SECTION PROJECTS
     letter-spacing: 2px;
     opacity: 0;
     animation: bounceIn 1s ease-out 0.5s forwards;
+}
+
+    margin-top: 40px;
 }
 
 #contact-section p {
@@ -1169,6 +1197,7 @@ SECTION PROJECTS
 .contact-links a {
     position: relative;
     display: inline-block;
+    margin: 0 15px;
     transition: color 0.3s ease, transform 0.3s ease;
     font-size: 1.6rem;
     color: #FF6347;
@@ -1179,6 +1208,9 @@ SECTION PROJECTS
 .contact-links a:hover {
     background: linear-gradient(90deg, #FF6347, #FFD700);
     transform: scale(1.1);
+}
+
+    margin-right: 10px;
 }
 
 /* Podkreślenie linków przy hover */

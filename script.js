@@ -64,6 +64,48 @@ function generateDots(num) {
     }
 }
 
+// Teksty do pisania
+const strings = ["Web Developer", "Frontend Developer", "Backend Developer", "Fullstack Developer"];
+
+// Element, w którym będzie wyświetlany tekst
+const typingElement = document.getElementById('typing-text');
+
+// Ustawienia
+let currentStringIndex = 0;
+let currentCharIndex = 0;
+let typingSpeed = 150; // Prędkość pisania (ms na znak)
+let erasingSpeed = 100; // Prędkość usuwania (ms na znak)
+let delayBetweenStrings = 2000; // Czas opóźnienia po zakończeniu pisania (ms)
+
+function type() {
+    // Pisanie tekstu
+    if (currentCharIndex < strings[currentStringIndex].length) {
+        typingElement.textContent += strings[currentStringIndex][currentCharIndex];
+        currentCharIndex++;
+        setTimeout(type, typingSpeed); // Wywołanie rekurencyjne
+    } else {
+        setTimeout(erase, delayBetweenStrings); // Po zakończeniu pisania, zaczynaj usuwanie
+    }
+}
+
+function erase() {
+    // Usuwanie tekstu
+    if (currentCharIndex > 0) {
+        typingElement.textContent = typingElement.textContent.slice(0, -1);
+        currentCharIndex--;
+        setTimeout(erase, erasingSpeed); // Wywołanie rekurencyjne
+    } else {
+        // Zmiana na następny tekst
+        currentStringIndex = (currentStringIndex + 1) % strings.length;
+        setTimeout(type, typingSpeed); // Zaczynaj pisać nowy tekst
+    }
+}
+
+// Uruchomienie efektu pisania na stronie
+window.onload = function() {
+    setTimeout(type, delayBetweenStrings); // Rozpoczynamy pisanie po załadowaniu strony
+};
+
 // Funkcja obsługująca widoczność sekcji About
 function handleAboutSection() {
     const aboutContainer = document.querySelector('.about-container');
