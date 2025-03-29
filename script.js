@@ -270,4 +270,45 @@ document.getElementById('scroll-to-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// Funkcja dla animacji wejścia h1, h2, h3, p, .highlight i social-links
 
+    // Funkcja animująca elementy
+    function animateElement(element, delay) {
+        setTimeout(() => {
+            element.classList.add('visible');
+        }, delay);
+    }
+
+    // Pobieramy elementy
+    const h1 = document.querySelector('h1');
+    const h2 = document.querySelector('h2');
+    const h3 = document.querySelector('h3');
+    const p = document.querySelector('p');
+    const span = document.querySelector('.highlight');
+    const socialLinks = document.querySelector('.social-links');
+
+    // Animacja elementów z opóźnieniem
+    animateElement(h1, delay);
+    delay += 1000; // Opóźnienie po każdym elemencie
+    animateElement(h2, delay);
+    delay += 1000;
+    animateElement(h3, delay);
+    delay += 1000;
+    animateElement(p, delay);
+    delay += 1000;
+    animateElement(span, delay);
+    delay += 1000;
+    animateElement(socialLinks, delay);
+});
+
+// Funkcja dla animacji wejścia #nav-links li
+window.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('#nav-links li'); // Pobieramy wszystkie elementy li w navbarze
+    
+    // Iterujemy przez linki i dodajemy klasę 'show' po określonym czasie
+    navLinks.forEach((link, index) => {
+        setTimeout(() => {
+            link.classList.add('show'); // Dodajemy klasę, aby uruchomić animację
+        }, index * 200); // Każdy link pojawia się po opóźnieniu 300ms od poprzedniego
+    });
+});

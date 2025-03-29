@@ -128,6 +128,19 @@ NAVBAR
     text-decoration: none;
 }
 
+
+#nav-links li {
+    opacity: 0; /* Ustawiamy elementy na niewidoczne początkowo */
+    transform: translateX(200px); /* Ustawiamy je na prawo */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Przejście przez opacity i transform */
+}
+
+/* Dodajemy animację wejścia */
+#nav-links li.show {
+    opacity: 1; /* Element stanie się widoczny */
+    transform: translateX(0); /* Element wróci na swoje miejsce */
+}
+
 /* Hamburger menu icon styles */
 .menu-icon {
     display: none;
@@ -215,6 +228,107 @@ SEKCJA INTRO
     padding: 20px;
 }
 
+.text-content {
+    max-width: 50%;
+}
+
+/* Początkowo ukryte elementy */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px); /* Elementy poza ekranem */
+}
+
+/* Animacje pojawiania się elementów */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Animacje wejścia dla różnych elementów */
+h1 {
+    animation: fadeInUp 1s ease-in-out forwards;
+    animation-delay: 0s; /* Pojawia się na początku */
+}
+
+h2 {
+    animation: fadeInLeft 1s ease-in-out forwards;
+    animation-delay: 0.5s; /* Pojawia się później */
+}
+
+h3 {
+    animation: fadeInRight 1s ease-in-out forwards;
+    animation-delay: 1s; /* Pojawia się później */
+}
+
+p {
+    animation: fadeInUp 1s ease-in-out forwards;
+    animation-delay: 1.5s; /* Pojawia się ostatnia z tych elementów */
+}
+
+/* Animacja pojawiania się z dołu */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animacja pojawiania się z lewej */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animacja pojawiania się z prawej */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animacja dla .social-links (później) */
+@keyframes fadeInSocialLinks {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.social-links {
+    animation: fadeInSocialLinks 1s ease-in-out forwards;
+    animation-delay: 2s; /* Pojawia się po h1, h2, h3, p */
+}
+
+@keyframes highlightText {
+
+    50% {
+        box-shadow: 0 0 10px 5px #50e3c2;  /* Dodanie poświaty w połowie animacji */
+    }
+}
+
+.highlight {
+    animation: highlightText 2s ease-in-out forwards infinite;
+    animation-delay: 2s;
 }
 
 .intro-image {
@@ -262,6 +376,14 @@ SEKCJA INTRO
 .intro-text {
     z-index: 2;
     padding: 0;
+.text-content h3 {
+    font-size: 1.8rem;
+}
+
+.text-content .highlight {
+    color: #34D399;
+}
+
 .text-content p {
     font-size: 1.2rem;
     margin-top: 10px;
