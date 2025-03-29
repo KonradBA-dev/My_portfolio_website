@@ -188,13 +188,30 @@
                 <h1 class="section-heading-3">Let's Work Together</h1>
             </div>
         
-            <!-- https://fontawesome.com/ czcionki -->
+            <!-- Formularz kontaktowy -->
+            <div class="contact-form">
+                <form action="submit_form.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
                         <input type="text" id="subject" name="subject" required placeholder="Enter subject">
                     </div>
                     <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        
+            <!-- Linki społecznościowe -->
             <div class="contact-links">
                 <a href="https://github.com/" target="_blank" class="contact-link">
                     <i class="fab fa-github"></i> Github

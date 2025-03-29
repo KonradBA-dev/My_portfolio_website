@@ -1184,6 +1184,69 @@ SECTION PROJECTS
     animation: bounceIn 1s ease-out 0.5s forwards;
 }
 
+/* Nagłówek */
+.contact-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #34D399; /* Dostosowane do odcienia zieleni */
+}
+
+.contact-header p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/* Formularz kontaktowy */
+.contact-form {
+    margin: 30px auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.5); /* Przezroczyste tło */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.contact-form button {
+    padding: 12px 20px;
+    background-color: #34D399;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #2aa77f;
+}
+
+/* Linki społecznościowe */
+.contact-links {
     margin-top: 40px;
 }
 
@@ -1278,6 +1341,7 @@ SECTION PROJECTS
     transform: scale(1.1);
 }
 
+.contact-links i {
     margin-right: 10px;
 }
 
