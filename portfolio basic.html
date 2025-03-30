@@ -28,25 +28,12 @@
         </nav>
         
         <div class="intro-background">
-        <section id="intro-section" class="section">
-            <div class="intro-content">
-                <div class="text-content">
-                    <h1>Welcome to My Portfolio</h1>
-                    <h2 class="typing">Konrad Bączek</h2>
-                    <h3>Passionate <span id="typing-text"></span></h3>
-                    <p>I specialize in creating responsive and user-friendly web applications. With experience in both frontend and backend development, I bring ideas to life through clean and efficient code. 
-                    <span class="highlight typing">Let's build something amazing together!</span>
-                    <div class="social-links">
-                        <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:your-email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:+123456789" target="_blank"><i class="fas fa-phone"></i></a>
             <section id="intro-section" class="section">
                 <div class="intro-content">
                     <div class="text-content">
                         <h1 class="hidden">Welcome to My Portfolio</h1>
                         <h2 class="hidden">Konrad Bączek</h2>
-                        <h3 class="hidden">Passionate <span id="typing-text" class="highlight"></span></h3>
+                        <h3 class="hidden">Passionate <span id="typing-text"></span></h3>
                         <p class="hidden">I specialize in creating responsive and user-friendly web applications. With experience in both frontend and backend development, I bring ideas to life through clean and efficient code. <br> 
                         <span class="highlight">Let's build something amazing together!</span></p>
                         <div class="social-links hidden">
@@ -60,37 +47,54 @@
                         <img src="./Images/My bio.png" alt="Profile Image" class="profile-image hidden">
                     </div>
                 </div>
-                <div class="image-container">
-                    <img src="./Images/My bio.png" alt="Profile Image" class="profile-image">
-                </div>
-            </div>
-        </section>
-</div>
             </section>
         </div>
         
-
         <section id="about-section" class="section">
             <div class="about-container">
                 <!-- Tekst po lewej stronie -->
                 <div class="left-side">
-                    <p>Witam!</p>
-                    <p>Jestem Konrad.</p>
-                    <p>Jestem programistą i pasjonatem technologii.</p>
+                    <h1>About me</h1>
+                    <p>Hello! My name is Konrad, and I am a frontend developer. I specialize in creating interactive web applications, primarily using JavaScript, React, and Vue. My journey with programming started a few years ago, and since then, I have been constantly improving my skills.</p>
                 </div>
-        
+                
                 <!-- Tekst po prawej stronie -->
                 <div class="right-side">
-                    <p>Szkolę się na Frontend Developera / Programistę JavaScript.</p>
-                    <p>Tworzę projekty, które łączą technologię i design.</p>
-                    <p>Pasjonuje mnie tworzenie przyjaznych dla użytkownika i innowacyjnych aplikacji webowych.</p>
+                    <p>My goal is to create applications that are functional and user-friendly. I focus on accessibility, efficiency, and attention to detail, tailoring solutions to the unique needs of projects and user expectations.</p> 
+                    <p>Communication and teamwork are key for me. I believe that good information exchange and effective collaboration enable better achievement of project goals. I always strive to understand the team's needs and work together to achieve the best results.</p>
+                    
+                    <!-- Button to show more information -->
+                    <button id="moreAboutMeBtn" class="more-about-me-btn">More About Me</button>
                 </div>
             </div>
         </section>
+
+        <div id="myModal" class="modal-section-about">
+            <div class="modal-content-section-about">
+                <span class="close-section-about">&times;</span>
+                <h2>More About Me</h2>
+                <p class="main-text">I possess solid skills in JavaScript (advanced level), as well as in the following technologies and tools:</p>
+                <ul class="skills-list">
+                    <li>Design Patterns in JavaScript</li>
+                    <li>React & Vue 3 Frameworks</li>
+                    <li>Backend technologies: Node.js & Express.js</li>
+                    <li>Grunt.js for task automation</li>
+                    <li>HTML / XHTML / HTML5 / XML</li>
+                    <li>CSS / CSS3 and preprocessors SASS and COMPASS</li>
+                    <li>Code Testing using Jasmine, Karma, Cypress, Jest, Supertest</li>
+                    <li>Databases: MongoDB (Mongoose) & PostgreSQL (Sequelize)</li>
+                    <li>Regular Expressions in JavaScript, jQuery & AJAX</li>
+                </ul>
+                <p class="main-text">These skills have enabled me to build web applications and dynamic websites, allowing me to understand how crucial code optimization and efficient user interfaces are. I constantly deepen my knowledge of new technologies and best practices in the industry.</p>
+                <p class="main-text">Although I don't yet have professional experience, my commitment to learning and skills gained through intensive courses and self-study have prepared me for challenges in this dynamic field.</p>
+                <p class="main-text">I am a determined, responsible individual, and my eagerness to learn makes it easy for me to grasp new technologies and solutions. I believe that my skills and openness to challenges will quickly make me a valuable team member.</p>
+                <p class="main-text">I am eager to gain my first professional experience in a working environment that will allow me to further develop as a programmer. I am confident that my enthusiasm and commitment will contribute to the company's goals.</p>
+            </div>
+        </div>
     
         <section id="skills-section" class="section">
             <div class="section-heading">
-                Moje Umiejętności
+                <h2>Moje Umiejętności</h2>
             </div>
             <div class="skills-container">
                 <div class="skill-information">
@@ -169,7 +173,7 @@
             </div>
                 
         <!-- Modal -->
-        <div id="project-modal" class="modal">
+        <div id="project-modal" class="modal-project">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2 id="modal-title"></h2>
@@ -186,6 +190,7 @@
         <section id="contact-section" class="section contact-section">
             <div class="contact-header">
                 <h1 class="section-heading-3">Let's Work Together</h1>
+                <p>Feel free to get in touch!</p>
             </div>
         
             <!-- Formularz kontaktowy -->
@@ -214,19 +219,18 @@
             <!-- Linki społecznościowe -->
             <div class="contact-links">
                 <a href="https://github.com/" target="_blank" class="contact-link">
-                    <i class="fab fa-github"></i> Github
+                    <i class="fab fa-github"></i> GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/konrad-b%C4%85czek/" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin-in"></i> Linkedin
+                <a href="https://www.linkedin.com/in/yourprofile/" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
                 </a>
-                <a href="mailto: qndziulek@gmail.com" target="_blank" class="contact-link">
+                <a href="mailto:your-email@example.com" target="_blank" class="contact-link">
                     <i class="fas fa-envelope-square"></i> Email
                 </a>
-
-                <a href="tel:+48821823433" target="_blank" class="contact-link">
-                    <i class="fa fa-phone"></i> Telefon
+                <a href="tel:+1234567890" target="_blank" class="contact-link">
+                    <i class="fa fa-phone"></i> Phone
                 </a>
-            </div>  
+            </div>
         </section>
         <button id="scroll-to-top" class="scroll-to-top">↑</button> 
     </main>

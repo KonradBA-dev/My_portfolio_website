@@ -1,6 +1,6 @@
 // Funkcja do sprawdzenia, czy sekcja jest w widoku
 function isSectionInView(section, offset = 0) {
-    const sectionRect = section.getBoundingClientRect(); // Przechowujemy wynik obliczeń w zmiennej, by uniknąć zbędnych wywołań
+    const sectionRect = section.getBoundingClientRect();
     const sectionTop = sectionRect.top + offset;
     const sectionBottom = sectionRect.bottom;
     const windowHeight = window.innerHeight;
@@ -64,6 +64,8 @@ function generateDots(num) {
     }
 }
 
+// Funkcja efektu pisania dla intro typing text
+
 // Teksty do pisania
 const strings = ["Web Developer", "Frontend Developer", "Backend Developer", "Fullstack Developer"];
 
@@ -106,7 +108,6 @@ window.onload = function() {
     setTimeout(type, delayBetweenStrings); // Rozpoczynamy pisanie po załadowaniu strony
 };
 
-// Funkcja obsługująca widoczność sekcji About
 function handleAboutSection() {
     const aboutContainer = document.querySelector('.about-container');
     const leftSide = document.querySelector('.left-side');
@@ -114,7 +115,7 @@ function handleAboutSection() {
 
     if (aboutContainer) {
         // Lewy tekst: pojawia się od początku widoczności sekcji
-        if (isSectionInView(aboutContainer)) {
+        if (isSectionInView(aboutContainer, 0)) {
             if (leftSide) {
                 leftSide.classList.add('visible');
                 leftSide.classList.remove('hidden');
@@ -127,7 +128,7 @@ function handleAboutSection() {
         }
 
         // Prawy tekst: pojawia się dopiero od połowy wysokości sekcji
-        const halfHeight = aboutContainer.getBoundingClientRect().height / 2; // Obliczamy połowę wysokości sekcji
+        const halfHeight = aboutContainer.getBoundingClientRect().height / 2;
         if (isSectionInView(aboutContainer, halfHeight)) {
             if (rightSide) {
                 rightSide.classList.add('visible');
@@ -154,45 +155,10 @@ function handleScroll() {
         }
     });
 
-    // Parallax efekt dla obrazu tła
-    const parallaxImage = document.querySelector('.intro-image');
-    if (parallaxImage) {
-        const scrollPosition = window.scrollY; // Pobieramy aktualną pozycję przewinięcia strony
-        parallaxImage.style.transform = `translateY(${scrollPosition * 0.3}px)`; // Przesuwamy obrazek w tle
-    }
-
     // Obsługa sekcji About
     handleAboutSection(); // Wywołanie obsługi sekcji About
 }
 
-// Funkcja do efektu pisania dla tekstu
-async function typeText(element, text, delay) {
-    for (let i = 0; i < text.length; i++) {
-        element.textContent += text[i]; // Dodajemy kolejny znak do tekstu
-        await new Promise(resolve => setTimeout(resolve, delay)); // Czekamy określony czas przed dodaniem kolejnego znaku
-    }
-}
-
-// Funkcja do uruchomienia efektu pisania
-async function runTypingEffect() {
-    const nameElement = document.querySelector('.intro-name');
-    const positionElement = document.querySelector('.intro-position');
-
-    if (nameElement && positionElement) {
-        await typeText(nameElement, 'Konrad Bączek', 150); // Uruchamiamy efekt pisania dla imienia
-        await typeText(positionElement, 'Frontend Developer / Backend Developer', 100); // Uruchamiamy efekt pisania dla stanowiska
-    }
-}
-
-// Zmiana klasy navbar na "scrolled" po przewinięciu strony
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled'); // Dodajemy klasę, jeśli przewinięto więcej niż 50px
-    } else {
-        navbar.classList.remove('scrolled'); // Usuwamy klasę, jeśli przewinięto mniej niż 50px
-    }
-});
 
 window.addEventListener('scroll', () => {
     highlightActiveLink();
@@ -247,10 +213,33 @@ function closeModal() {
     document.getElementById('project-modal').style.display = "none"; // Ukrywamy modal
 }
 
+// Pobieramy elementy dla modalu i przycisk
+const modal = document.getElementById("myModal");
+const btn = document.getElementById("moreAboutMeBtn");
+const span = document.getElementsByClassName("close-section-about")[0];
+
+// Otwieramy modalne okno kiedy użytkownik kliknie w przycisk
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Zamykamy modalne okno kiedy użytkownik kliknie w przycisk dla <span> (x)
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Zamykamy modalne okno kiedy użytkownik kliknie gdziekolwiek poza modalnym oknem
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Toggle navbar visibility when clicking the hamburger menu
+
 const menuIcon = document.getElementById('menu-icon');
 const navLinks = document.getElementById('nav-links');
 
-// Toggle navbar visibility when clicking the hamburger menu
 menuIcon.addEventListener('click', () => {
     navLinks.classList.toggle('active'); // Przełączamy widoczność menu na mobilnym ekranie
 });
@@ -271,6 +260,8 @@ document.getElementById('scroll-to-top').addEventListener('click', () => {
 });
 
 // Funkcja dla animacji wejścia h1, h2, h3, p, .highlight i social-links
+window.addEventListener('DOMContentLoaded', (event) => {
+    let delay = 0;
 
     // Funkcja animująca elementy
     function animateElement(element, delay) {
@@ -301,7 +292,7 @@ document.getElementById('scroll-to-top').addEventListener('click', () => {
     animateElement(socialLinks, delay);
 });
 
-// Funkcja dla animacji wejścia #nav-links li
+// Funkcja dla animacji wejścia navlink
 window.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('#nav-links li'); // Pobieramy wszystkie elementy li w navbarze
     
@@ -312,3 +303,4 @@ window.addEventListener('DOMContentLoaded', () => {
         }, index * 200); // Każdy link pojawia się po opóźnieniu 300ms od poprzedniego
     });
 });
+

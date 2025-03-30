@@ -8,7 +8,7 @@
 /* Styl dla całej strony */
 body {
     height: 100%;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Jeden typ czcionki dla całej strony */
     line-height: 1.6; 
 }
 
@@ -23,15 +23,23 @@ html {
 /* Sekcje */
 section {
     width: 100%;
-    padding: 80px 20px;
     box-sizing: border-box;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s, transform 0.6s;
+    background-color: #2980b9;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
 }
 
 
@@ -92,7 +100,7 @@ NAVBAR
 
 #navbar ul li a {
     margin-left: 3px;
-    color: #fafafa;
+    color: rgba(255, 255, 255, 0.7);
     opacity: 0.8;
     font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -208,9 +216,8 @@ SEKCJA INTRO
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('./Video/intro\ section.mp4');
     background-size: cover;
-    color: white;
+    color:rgba(255, 255, 255, 0.7);
     text-align: center;
     overflow: hidden;
     margin: 0; /* Usuń marginesy */
@@ -330,14 +337,7 @@ p {
     animation: highlightText 2s ease-in-out forwards infinite;
     animation-delay: 2s;
 }
-
-.intro-image {
-    max-width: 100vw; /* Ograniczenie szerokości */
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%; /* Dodaj zaokrąglenie do zdjęcia */
-    transition: transform 0.2s ease-out;
+    
 #typing-text {
     font-size: 2rem;
     font-family: 'Courier New', Courier, monospace;
@@ -346,8 +346,9 @@ p {
     border-right: 4px solid;
     padding-right: 5px;
     animation: blink 0.7s infinite step-end;
-    color: #34D399;
+    color: #50e3c2;
   }
+
   
   @keyframes blink {
     50% {
@@ -376,6 +377,8 @@ p {
 .intro-text {
     z-index: 2;
     padding: 0;
+}
+
 .text-content h3 {
     font-size: 1.8rem;
 }
@@ -415,14 +418,21 @@ p {
     height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 25px #34D399, 0 0 50px #34D399, 0 0 10px #00B5D6, 0 0 20px #00B5D6;
+    overflow: hidden; /* Zapewnia, że obramowanie nie będzie wychodzić poza obraz */
+    box-shadow: 
+    0 0 30px #34D399,  /* Fioletowy i błękitny z przezroczystością */
+    0 0 60px #7f69d2,  /* Złoty */
+    0 0 40px rgba(255, 0, 255, 0.4); /* Fioletowy z przezroczystością */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 1;  /* Upewnij się, że obrazek jest widoczny */
 }
 
 .profile-image:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 60px #34D399, 0 0 100px #34D399, 0 0 20px #00B5D6, 0 0 40px #00B5D6;
+    transform: scale(1.1); /* Powiększenie obrazka na hover */
+    box-shadow: 
+        0 0 30px #34D399,        /* Błękitny */
+        0 0 60px #00B5D6,        /* Błękitny */
+        0 0 40px #9AFF57;       /* Limonkowy */
 }
 
 /* Jeśli obrazek ma pozostać widoczny w tle przez cały czas, wyłączamy inne animacje */
@@ -532,11 +542,11 @@ SEKCJA ABOUT
     max-width: 1500px;
     margin: 0 auto; /* Wyśrodkowanie kontenera */
     padding: 20px; /* Wewnętrzne odstępy dla kontenera */
-    background: linear-gradient(180deg, #ffffff, #f7f7f7); /* Gradient w odcieniach bieli */
+    background: transparent; /* Tło przezroczyste */
+    border: 5px solid rgba(255, 255, 255, 0.7);; /* Jasny border */
     border-radius: 20px; /* Zaokrąglone rogi */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Delikatny cień dla całego kontenera */
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1); /* Cień wewnętrzny i zewnętrzny */
 }
-
 
 /* Styl kontenerów tekstu */
 .message {
@@ -556,47 +566,11 @@ SEKCJA ABOUT
     font-family: 'Playfair Display', serif; /* Nowa czcionka dla lewego tekstu */
     font-size: 2.8rem; /* Powiększony rozmiar tekstu */
     font-weight: bold; /* Pogrubiony tekst */
-    background: linear-gradient(90deg, #FF6347, #FFD700); /* Gradient od koralowego do złotego */
+    background: linear-gradient(90deg, #34D399, #00B5D6);
     -webkit-background-clip: text; /* Wypełnienie tekstu gradientem */
     -webkit-text-fill-color: transparent; /* Ustawienie tekstu jako przezroczysty */
     opacity: 0; /* Ukrycie przed animacją */
     animation: fadeInZoom 1s forwards; /* Animacja pojawiania się z powiększeniem */
-}
-
-.left-side p:nth-child(1) {
-    animation-delay: 0.3s; /* Opóźnienie dla pierwszego akapitu */
-}
-
-.left-side p:nth-child(2) {
-    animation-delay: 0.6s; /* Opóźnienie dla drugiego akapitu */
-}
-
-.left-side p:nth-child(3) {
-    animation-delay: 0.9s; /* Opóźnienie dla trzeciego akapitu */
-}
-
-/* Tekst po prawej stronie */
-.right-side p {
-    font-family: 'Raleway', sans-serif; /* Nowa czcionka dla prawego tekstu */
-    font-size: 2rem; /* Mniejszy rozmiar tekstu */
-    font-weight: 500; /* Średnia grubość tekstu */
-    background: linear-gradient(90deg, #6A5ACD, #8A2BE2); /* Gradient od fioletowego do niebieskiego */
-    -webkit-background-clip: text; /* Wypełnienie tekstu gradientem */
-    -webkit-text-fill-color: transparent; /* Ustawienie tekstu jako przezroczysty */
-    opacity: 0; /* Ukrycie przed animacją */
-    animation: slideFadeIn 1.2s forwards; /* Animacja pojawiania się ze ślizgiem */
-}
-
-.right-side p:nth-child(1) {
-    animation-delay: 1.2s; /* Opóźnienie dla pierwszego akapitu */
-}
-
-.right-side p:nth-child(2) {
-    animation-delay: 1.5s; /* Opóźnienie dla drugiego akapitu */
-}
-
-.right-side p:nth-child(3) {
-    animation-delay: 1.8s; /* Opóźnienie dla trzeciego akapitu */
 }
 
 /* Animacja pojawiania się z powiększeniem dla tekstu po lewej stronie */
@@ -611,6 +585,18 @@ SEKCJA ABOUT
     }
 }
 
+/* Tekst po prawej stronie */
+.right-side p {
+    font-family: 'Raleway', sans-serif; /* Nowa czcionka dla prawego tekstu */
+    font-size: 2rem; /* Mniejszy rozmiar tekstu */
+    font-weight: 500; /* Średnia grubość tekstu */
+    background: linear-gradient(90deg, #34D399, #00B5D6);
+    -webkit-background-clip: text; /* Wypełnienie tekstu gradientem */
+    -webkit-text-fill-color: transparent; /* Ustawienie tekstu jako przezroczysty */
+    opacity: 0; /* Ukrycie przed animacją */
+    animation: slideFadeIn 1.2s forwards; /* Animacja pojawiania się ze ślizgiem */
+}
+
 /* Animacja pojawiania się ze ślizgiem dla tekstu po prawej stronie */
 @keyframes slideFadeIn {
     0% {
@@ -623,32 +609,14 @@ SEKCJA ABOUT
     }
 }
 
-/* Ukrycie right-side do momentu przewinięcia */
-.right-side.hidden {
-    opacity: 0;
-    transform: translateY(50px);
-}
-
 /* Styl dla tekstu po lewej stronie */
-.left-side {
+.left-side, .right-side {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    width: 48%;
 }
 
-/* Styl dla tekstu po prawej stronie */
-.right-side {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Widoczny tekst */
-.left-side.visible,
-.right-side.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* Animacja dla pojawiającego się tekstu po lewej stronie */
 @keyframes slideInLeft {
@@ -674,7 +642,192 @@ SEKCJA ABOUT
     }
 }
 
+.left-side h1 {
+    font-size: 2.5rem;
+    color: #34D399;
+    margin-bottom: 20px;
+    animation: none; /* Usunięcie animacji */
+    font-weight: 700;
+    text-shadow: 0 0 10px #00B5D6, 0 0 20px #8A2BE2; /* Colorful shadow */
+}
 
+.right-side h4 {
+    font-size: 1.2rem;
+    color: #8B5CF6;
+    margin-bottom: 15px;
+}
+
+.left-side p, .right-side p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333; /* Ciemniejszy kolor tekstu dla lepszego kontrastu */
+    margin-bottom: 15px;
+    will-change: transform, opacity;
+}
+
+/* Styl dla widocznych elementów po załadowaniu */
+.left-side.visible, .right-side.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Styl dla przycisku 'More About Me' */
+.more-about-me-btn {
+    background-color: #34D399;
+    box-shadow: 0 0 10px #34D399;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.more-about-me-btn:hover {
+    background-color: #50e3c2;
+    box-shadow: 0 0 20px #50e3c2;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Modal general styles */
+.modal-section-about {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark background */
+    overflow: auto;
+    padding-top: 60px;
+    text-align: center; /* Center the content */
+}
+
+
+/* Modal content */
+.modal-content-section-about {
+    animation: none;
+    background: linear-gradient(135deg, #090645, #2a1a6b); /* Purple background */
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 20px; /* Rounded corners */
+    width: 80%;
+    max-width: 800px;
+    color: #fff; /* White text color for better contrast */
+    box-shadow: 0 0 20px #3700ff, 0 0 40px #00ce82; /* Violet and Blue shadows */
+    transition: all 0.3s ease; /* Smooth transition for shadows */
+    line-height: 1.8;
+}
+
+/* Title */
+.modal-content-section-about h2 {
+    font-size: 2.5rem;
+    color: #34D399;
+    margin-bottom: 20px;
+    animation: none; /* Usunięcie animacji */
+    font-weight: 700;
+    text-shadow: 0 0 10px #00B5D6, 0 0 20px #8A2BE2; /* Colorful shadow */
+}
+
+/* List of skills */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.skills-list li {
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.skills-list li::before {
+    content: "• ";
+    color: #34D399; /* Green bullet points */
+    font-size: 1.5rem;
+}
+
+/* Modal text */
+.main-text {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+    text-align: justify; /* Justify text for better readability */
+    line-height: 1.6;
+    animation: none; /* Usunięcie animacji */
+}
+
+
+/* Close button */
+.close-section-about {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+.close-section-about:hover,
+.close-section-about:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content-section-about {
+    animation: fadeInModal 0.5s ease-out;
+}
+
+/* Add a fade-in effect for the modal content */
+@keyframes fadeInModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Układ w kolumnie dla mniejszych ekranów */
+        align-items: center; /* Wyśrodkowanie zawartości */
+        gap: 15px;
+    }
+
+    .left-side, .right-side {
+        width: 90%; /* Ustawienie szerokości kontenerów na mniejszych ekranach */
+        margin-bottom: 20px; /* Odstęp między sekcjami */
+    }
+
+    .left-side p, .right-side p {
+        font-size: 1.2rem; /* Zmniejszenie rozmiaru tekstu na małych ekranach */
+    }
+
+    .modal-content-section-about {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .modal-content-section-about h2 {
+        font-size: 2rem;
+    }
+
+    .skills-list {
+        font-size: 1rem;
+    }
+
+    .main-text {
+        font-size: 1rem;
+    }
+}
 
 /* 
 ---- 
@@ -805,11 +958,10 @@ progress::-webkit-progress-value {
 }
 
 .skills-container {
-    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 20px;
+    gap: 30px;
 }
 
 @keyframes oscillate {
@@ -970,7 +1122,7 @@ SECTION PROJECTS
 }
 
 /* Modal */
-.modal {
+.modal-project {
     display: none;
     position: fixed;
     z-index: 60;
@@ -1391,7 +1543,8 @@ SECTION PROJECTS
 }
 
 
-/* KONIEC SECTION CONTACT
+/* 
+KONIEC SECTION CONTACT
 ----
 ----
-*/ 
+*/
