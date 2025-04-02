@@ -45,8 +45,21 @@ section::before {
 
 /* Kiedy sekcja stanie się widoczna */
 .section.visible {
-    opacity: 5;
+    opacity: 1;
     transform: translateY(0);
+}
+
+/* Sekcja, początkowo niewidoczna */
+.section .content {
+    opacity: 0; /* Zawartość jest niewidoczna */
+    transform: translateY(30px); /* Zawartość jest przesunięta w dół */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Animacja przejścia */
+}
+
+/* Kiedy zawartość jest widoczna */
+.section.visible .content {
+    opacity: 1; /* Zawartość staje się widoczna */
+    transform: translateY(0); /* Zawartość przesuwa się na swoje miejsce */
 }
 
 /* Stylizacja wskaźnika przewijania */
@@ -675,7 +688,7 @@ SEKCJA ABOUT
 .more-about-me-btn {
     background-color: #34D399;
     box-shadow: 0 0 10px #34D399;
-    color: white;
+    color: rgba(255, 255, 255, 0.758);
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
@@ -686,7 +699,7 @@ SEKCJA ABOUT
 .more-about-me-btn:hover {
     background-color: #50e3c2;
     box-shadow: 0 0 20px #50e3c2;
-    color: rgba(255, 255, 255, 0.7);
+    color: white;
 }
 
 
@@ -837,65 +850,82 @@ SEKCJA SKILL
 ----
 */ 
 
-
-/* Nowa animacja na hover dla skill-information */
-@keyframes hoverEffect {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(10deg) scale(1.05);
-    }
-    100% {
-        transform: rotate(0deg) scale(1.1); /* Powrót do oryginalnej pozycji z większym rozmiarem */
-    }
+#skills-section {
+    position: relative;
+    height: auto;
+    background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png) no-repeat center center/cover;
+    overflow: hidden; 
+    padding-top: 60px; 
+    box-sizing: border-box;
 }
 
-/* Zastosowanie animacji hover */
+/* Nagłówek sekcji */
+.section-heading {
+    color: #34D399;
+    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6;
+    text-align: center;
+    font-size: 2rem;
+    padding: 20px;
+    margin-bottom: 40px;
+    z-index: 2;
+}
+
+/* Kontener umiejętności */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+/* Informacje o umiejętnościach */
 .skill-information {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     width: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 1;
 }
 
-/* Animacja na hover */
-.skill-information:hover {
-    animation: hoverEffect 1s ease-in-out forwards; /* Dodanie animacji na hover */
+/* Nazwa umiejętności */
+.skill-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    color: transparent;
+    background: linear-gradient(20deg, #8B5CF6, #34D399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: inline-block;
+    margin-top: 10px;
+    letter-spacing: 1px;
 }
 
-/* Pulsowanie dla ikon */
-@keyframes pulseIcon {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.15);
-    }
+/* Efekty hover dla nazwy umiejętności */
+.skill-name:hover {
+    background: linear-gradient(20deg, #34D399, #8B5CF6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 15px #34D399, 0 0 25px #34D399; /* Podświetlenie przy hover */
 }
 
+/* Ikony z animacją pulsowania (zmniejszenie częstotliwości animacji) */
 .fa-beat {
-    animation: pulseIcon 1.5s ease-in-out infinite; /* Dodanie pulsowania dla ikon */
-    color: #8B5CF6; /* Kolor początkowy */
+    color: #34D399;
+    font-size: 2rem;
+    max-width: 100%;
+    animation: pulseIcon 1.5s ease-in-out infinite; /* Dodajemy pulsowanie tylko dla ikon */
 }
 
+/* Ikona na hover */
 .fa-beat:hover {
-    color: #34D399; /* Kolor przy hover */
-    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6; /* Efekt świetlny */
+    color: #34D399;
+    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6;
 }
-
-/* Animacja dla progress */
-@keyframes progressAnimation {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
+/* Pasek postępu */
 progress {
     width: 100%;
     height: 12px;
@@ -914,87 +944,96 @@ progress::-webkit-progress-value {
     border-radius: 5px;
 }
 
-/* Animacja oscylacji dla skill-name */
-@keyframes oscillateSkillName {
-    0% {
-        transform: translateX(0) rotate(0deg);
-    }
-    25% {
-        transform: translateX(-8px) rotate(-5deg);
+/* Animacja pulsowania dla ikon */
+@keyframes pulseIcon {
+    0%, 100% {
+        transform: scale(1);
     }
     50% {
-        transform: translateX(8px) rotate(5deg);
+        transform: scale(1.1); /* Subtelniejsza animacja */
     }
-    75% {
-        transform: translateX(-8px) rotate(-5deg);
+}
+
+/* Animacja dla progress */
+@keyframes progressAnimation {
+    0% {
+        width: 0;
     }
     100% {
-        transform: translateX(0) rotate(0deg);
+        width: 100%;
     }
 }
 
-.skill-name {
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-align: center;
-    animation: oscillateSkillName 1.5s ease-in-out infinite;
-    color: #34D399; /* Jasno złoty kolor */
-    display: inline-block;
-    margin-top: 10px;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6; /* Efekt świetlny */
-}
-
-.skill-name:hover {
-    color: #8B5CF6;
-    text-shadow: 0 0 15px #34D399, 0 0 25px #34D399;
-}
-
-/* Wideo w tle */
-#skills-section {
-    position: relative;
-    height: 100vh;
-    background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png) no-repeat center center/cover;
-}
-
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 30px;
-}
-
-@keyframes oscillate {
+/* Animacja hover dla skill-information */
+@keyframes hoverEffect {
     0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-10px);
+        transform: rotate(0deg) scale(1);
     }
     50% {
-        transform: translateX(10px);
-    }
-    75% {
-        transform: translateX(-10px);
+        transform: rotate(10deg) scale(1.05);
     }
     100% {
-        transform: translateX(0);
+        transform: rotate(0deg) scale(1.1);
     }
 }
 
-.section-heading {
-    color: #34D399;
-    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: oscillate 1s ease-in-out infinite;
-    font-size: 2rem;
-    z-index: 2;
-    text-align: center;
-    padding: 20px;
+/* Media queries dla responsywności */
+@media (max-width: 768px) {
+    .section-heading {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+
+    .skill-information {
+        width: 120px;
+        padding: 15px;
+    }
+
+    .skill-name {
+        font-size: 1.1rem;
+    }
+
+    .skills-container {
+        gap: 20px;
+    }
+
+    .fa-beat {
+        font-size: 1.5rem;
+    }
+
+    progress {
+        height: 10px;
+    }
 }
+
+@media (max-width: 480px) {
+    .section-heading {
+        font-size: 1.2rem;
+    }
+
+    .skill-information {
+        width: 100px;
+        padding: 10px;
+    }
+
+    .skill-name {
+        font-size: 1rem;
+    }
+
+    .skills-container {
+        gap: 15px;
+    }
+
+    .fa-beat {
+        font-size: 1.2rem;
+    }
+
+    progress {
+        height: 8px;
+    }
+}
+
+
 
 
 /* 

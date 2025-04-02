@@ -6,6 +6,7 @@ function isSectionInView(section, offset = 0) {
     const windowHeight = window.innerHeight;
 
     // Sprawdzenie, czy sekcja jest częściowo widoczna na ekranie
+    // Sprawdzamy, czy sekcja jest częściowo widoczna na ekranie
     return sectionTop <= windowHeight && sectionBottom >= 0;
 }
 
@@ -148,10 +149,13 @@ function handleScroll() {
     // Dodanie klasy 'visible' do sekcji w widoku
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
+        const content = section.querySelector('.content');
         if (isSectionInView(section)) { // Sprawdzamy, czy sekcja jest w widoku
             section.classList.add('visible');
+            content.classList.add('visible'); // Pokazujemy zawartość sekcji
         } else {
             section.classList.remove('visible');
+            content.classList.remove('visible'); // Ukrywamy zawartość sekcji
         }
     });
 
