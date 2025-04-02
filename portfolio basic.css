@@ -925,6 +925,7 @@ SEKCJA SKILL
     color: #34D399;
     text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6;
 }
+
 /* Pasek postępu */
 progress {
     width: 100%;
@@ -934,13 +935,18 @@ progress {
     animation: progressAnimation 2s ease-out forwards;
 }
 
-progress::-webkit-progress-bar {
-    background-color: #8B5CF6;
+progress::-webkit-progress-value {
+    background-color: #61d334; /* Zielony dla wysokich wartości */
     border-radius: 5px;
 }
 
-progress::-webkit-progress-value {
-    background-color: #34D399;
+progress::-webkit-progress-bar {
+    background-color: #dcdcdc;
+    border-radius: 5px;
+}
+
+progress[value="60"]::-webkit-progress-value {
+    background-color: #f13207; /* Czerwony dla niskich wartości */
     border-radius: 5px;
 }
 

@@ -307,4 +307,3 @@ window.addEventListener('DOMContentLoaded', () => {
         }, index * 200); // Każdy link pojawia się po opóźnieniu 300ms od poprzedniego
     });
 });
-
