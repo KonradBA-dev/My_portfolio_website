@@ -104,10 +104,11 @@ function erase() {
     }
 }
 
-// Uruchomienie efektu pisania na stronie
 window.onload = function() {
-    setTimeout(type, delayBetweenStrings); // Rozpoczynamy pisanie po załadowaniu strony
+    setTimeout(type, delayBetweenStrings);  // Rozpoczynamy efekt pisania
+    handleScroll();  // Uruchomienie scrollowania
 };
+
 
 function handleAboutSection() {
     const aboutContainer = document.querySelector('.about-container');
@@ -169,11 +170,6 @@ window.addEventListener('scroll', () => {
     handleScroll();
 });
 
-// Uruchomienie funkcji przy ładowaniu strony, aby sekcje mogły być widoczne, jeśli już znajdują się w widoku
-window.addEventListener('load', () => {
-    handleScroll(); // Wywołanie funkcji obsługującej scrollowanie przy załadowaniu strony
-    runTypingEffect(); // Uruchamiamy efekt pisania
-});
 // Funkcja do otwierania modalu
 function openModal(title, imageSrc, description, link, technologies, fullDescription, videoUrl) {
     const modal = document.getElementById("project-modal");
