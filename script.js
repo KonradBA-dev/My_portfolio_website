@@ -327,3 +327,32 @@ window.addEventListener('DOMContentLoaded', () => {
         }, index * 200); // Każdy link pojawia się po opóźnieniu 300ms od poprzedniego
     });
 });
+
+// PROJECT SECTION
+// Funkcja rozwijania nakładki
+function expandOverlay(element) {
+    const overlay = element.querySelector('.overlay');
+    const description = overlay.querySelector('.project-description');
+    const technologies = overlay.querySelector('.technologies');
+
+    overlay.style.height = '100%';  // Rozszerzenie nakładki
+    description.style.opacity = '1';  // Pokazanie opisu
+    technologies.style.opacity = '1';  // Pokazanie technologii
+}
+
+// Funkcja zwijania nakładki
+function shrinkOverlay(element) {
+    const overlay = element.querySelector('.overlay');
+    const description = overlay.querySelector('.project-description');
+    const technologies = overlay.querySelector('.technologies');
+
+    overlay.style.height = '0';  // Zmniejszenie wysokości nakładki
+    description.style.opacity = '0';  // Ukrycie opisu
+    technologies.style.opacity = '0';  // Ukrycie technologii
+}
+
+// Dodajemy nasłuchiwacze zdarzeń do każdego image-box
+document.querySelectorAll('.image-box').forEach(box => {
+    box.addEventListener('mouseenter', () => expandOverlay(box));
+    box.addEventListener('mouseleave', () => shrinkOverlay(box));
+});
