@@ -250,21 +250,24 @@
                     <div class="project-title">Portale Społecznościowe</div>
                 </div>
             </div>
-                
-            <!-- Modal -->
-            <div id="project-modal" class="modal-project">
-                <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <h2 id="modal-title"></h2>
-                    <!-- Dodanie linku do obrazka -->
-                    <a id="modal-link" href="#" target="_blank">
-                        <img id="modal-image" src="" alt="Project Image" class="modal-image">
-                    </a>
-                    <p id="modal-description"></p>
-                    <div id="modal-technologies" class="technologies"></div>
                 </div>
             </div>
         </section>
+<!-- Modal dla szczegółowego widoku projektu -->
+<div id="project-modal" class="modal-project">
+    <div class="modal-content">
+        <!-- Przycisk zamknięcia -->
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Project Title</h2>
+        <a id="modal-link" href="#" target="_blank">
+            <img id="modal-image" src="" alt="Project Image" class="modal-image">
+        </a>
+        <p id="modal-description">Detailed project description...</p>
+        <div id="modal-technologies" class="technologies"></div>
+        <iframe id="modal-video" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
 
         <section id="contact-section" class="section contact-section">
             <div class="contact-header content">

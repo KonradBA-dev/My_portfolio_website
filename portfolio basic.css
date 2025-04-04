@@ -1166,102 +1166,49 @@ SECTION PROJECTS
     }
 }
 
-/* Modal */
+/* Modal container */
 .modal-project {
-    display: none;
-    position: fixed;
-    z-index: 60;
+    display: none;  /* Początkowo ukryty */
+    position: fixed;  /* Modal w pozycji stałej */
+    z-index: 9999;  /* Wysoki priorytet, aby modal był na wierzchu */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Przyciemnienie tła */
-    overflow: auto;
-    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.7);  /* Przezroczyste tło */
+    overflow: auto;  /* Zawartość modalu może być przewijana */
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
 }
 
-/* Modal Content */
+/* Modal content */
 .modal-content {
     position: relative;
-    margin: 10% auto;
-    background-color: #fff;
-    width: 800px; /* Powiększona szerokość modalnego okna */
-    height: 500px; /* Powiększona wysokość modalnego okna */
-    max-width: 90%; /* Maksymalna szerokość dla mniejszych ekranów */
-    border-radius: 15px;
+    margin: 5% auto;
+    background-color: white;
     padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Głębszy cień */
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    animation: slideIn 0.5s ease-out; /* Animacja wchodzenia modalnego okna */
-    background: linear-gradient(180deg, #ffffff, #f7f7f7);
-}
-
-/* Animacja dla modalnego okna */
-@keyframes slideIn {
-    0% {
-        transform: translateY(-50%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.modal-content h2 {
-    font-size: 2.2rem; /* Zwiększony rozmiar nagłówka */
-    color: #333;
-    margin: 10px 0;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-/* Modal Content Image */
-.modal-content img {
-    width: 100%; /* Ustawienie szerokości obrazka na 100% szerokości kontenera */
-    height: auto; /* Zachowanie proporcji obrazka */
-    max-height: 300px; /* Maksymalna wysokość obrazka */
     border-radius: 10px;
-    object-fit: cover; /* Dopasowanie obrazka, aby wypełniał przestrzeń bez deformacji */
-    transition: transform 0.3s ease-in-out;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease-out;  /* Animacja wchodzenia */
 }
 
-/* Zwiększenie obrazka po hover */
-.modal-content img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 35px rgba(9, 25, 173, 0.957);
+/* Tytuł modalu */
+.modal-content h2 {
+    font-size: 2rem;
+    color: #333;
 }
 
-/* Opis */
-.modal-content p {
-    font-size: 1.1rem; /* Lekko zwiększony rozmiar tekstu */
-    color: #555;
-    text-align: center;
-    line-height: 1.6;
-    margin: 10px 0;
-    max-height: 250px; /* Zwiększona wysokość dla tekstu */
-    word-wrap: break-word; /* Łamanie długich słów */
-    overflow-y: visible; /* Wyłączenie przewijania */
-    padding: 0 15px; /* Dodatkowy padding, aby tekst nie dotykał krawędzi */
-}
-
-/* Klikalność w tle */
-.modal .modal-overlay {
-    position: absolute;
+/* Modal image */
+.modal-content img {
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: transparent;
+    height: auto;
+    max-height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 /* Technologie */
-.modal-content .technologies {
     margin-top: 10px;
     font-size: 1rem;
     color: #444;
@@ -1282,13 +1229,13 @@ SECTION PROJECTS
     background-color: #e0e0e0;
 }
 
-/* Przycisk zamknięcia */
+/* Close button */
 .close {
     position: absolute;
     top: 20px;
     right: 20px;
     font-size: 2rem;
-    color: #fff;
+    color: #333;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
@@ -1296,22 +1243,15 @@ SECTION PROJECTS
     transition: background 0.3s ease;
 }
 
-.close:hover,
-.close:focus {
-    color: #f00;
-    background: rgba(0, 0, 0, 0.8);
-    transform: scale(1.1);
-}
-
-/* Klucz animacji do stopniowego pojawiania się i rozmycia obrazu */
-@keyframes fadeInBlur {
+/* Animation for modal entrance */
+@keyframes slideIn {
     0% {
+        transform: translateY(-50%);
         opacity: 0;
-        filter: blur(10px);
     }
     100% {
+        transform: translateY(0);
         opacity: 1;
-        filter: blur(0);
     }
 }
 

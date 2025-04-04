@@ -174,48 +174,68 @@ window.addEventListener('load', () => {
     handleScroll(); // Wywołanie funkcji obsługującej scrollowanie przy załadowaniu strony
     runTypingEffect(); // Uruchamiamy efekt pisania
 });
+// Funkcja do otwierania modalu
+function openModal(title, imageSrc, description, link, technologies, fullDescription, videoUrl) {
+    const modal = document.getElementById("project-modal");
+    const modalTitle = modal.querySelector("#modal-title");
+    const modalImage = modal.querySelector("#modal-image");
+    const modalDescription = modal.querySelector("#modal-description");
+    const modalTechnologies = modal.querySelector("#modal-technologies");
+    const modalVideo = modal.querySelector("#modal-video");
 
-// Funkcja otwierająca modal
-function openModal(title, imageSrc, description, link) {
-    const modal = document.getElementById('project-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalImage = document.getElementById('modal-image');
-    const modalDescription = document.getElementById('modal-description');
-    const modalTechnologies = document.getElementById('modal-technologies');
+    // Ustawienie tytułu, obrazu, opisu i technologii w modalu
+    modalTitle.textContent = title;
+    modalImage.src = imageSrc;
+    modalDescription.textContent = fullDescription;
+    modalTechnologies.innerHTML = technologies.map(tech => `<span class="tech">${tech}</span>`).join(' ');
 
-    // Aktualizacja zawartości modalnego okna
-    modalTitle.textContent = title; // Ustawiamy tytuł modalu
-    modalImage.src = imageSrc; // Ustawiamy źródło obrazu
-    modalDescription.textContent = description; // Ustawiamy opis
+    // Ustawienie linku, jeżeli istnieje
+    if (link) {
+        modal.querySelector("#modal-link").href = link;
+    }
 
-    // Dynamicznie dodawane technologie (dla przykładu)
-    const technologies = {
-        "ExoraGYM": ["HTML", "CSS", "JavaScript"],
-        "Cyber Security": ["Python", "Cryptography", "Networking"],
-        "Drapacz Chmur": ["HTML", "CSS", "Vue.js"],
-        "Social Media": ["React", "Firebase", "Node.js"],
-        "Portale Społecznościowe": ["HTML", "CSS", "Bootstrap"]
-    };
+    // Ustawienie linku do video
+    modalVideo.src = videoUrl;
 
-    const techList = technologies[title] || []; // Pobieramy listę technologii na podstawie tytułu projektu
-    modalTechnologies.innerHTML = `Technologies used: ${techList.map(tech => `<span class="tech">${tech}</span>`).join(' ')}`; // Wyświetlamy technologie w modalnym oknie
-
-    // Wyświetlanie modalnego okna
-    modal.style.display = "block"; // Ustawiamy widoczność modalu
-
-    // Animacja obrazu w modalnym oknie
-    modalImage.classList.remove('fade-in'); // Usuwamy klasę animacji
-    void modalImage.offsetWidth; // Wymuszamy reflow, aby animacja się zrestartowała
-    modalImage.classList.add('fade-in'); // Dodajemy klasę animacji
-
-    // Przewijanie strony do modalnego okna
-    modal.scrollIntoView({ behavior: 'smooth' }); // Płynne przewinięcie do modalu
+    // Pokazanie modalu
+    modal.style.display = "block";  // Modal staje się widoczny
+    modal.style.opacity = 1;  // Zmiana przezroczystości
+    modal.style.visibility = "visible";  // Modal jest widoczny
 }
 
 // Funkcja zamykająca modal
 function closeModal() {
-    document.getElementById('project-modal').style.display = "none"; // Ukrywamy modal
+    const modal = document.getElementById("project-modal");
+    modal.style.display = "none";  // Ukrycie modalu
+    modal.style.opacity = 0;  // Zanik przezroczystości
+    modal.style.visibility = "hidden";  // Ukrywanie modalu
 }
+
+// Zamykanie modalu po kliknięciu poza nim
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("project-modal");
+    // Sprawdzamy, czy kliknięto poza modalem
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+// Nasłuchiwacz dla przycisku zamknięcia
+document.querySelector('.close').addEventListener('click', closeModal);
+
+// Sprawdzamy, czy mamy konflikt z innymi funkcjami
+function clearWindowClickEvents() {
+    // Sprawdzamy, czy przypadkowo nie nadpisujemy innych funkcji
+    if (typeof window.onclick !== 'function') {
+        window.onclick = function() {};
+    }
+}
+
+// Uruchamiamy funkcję do sprawdzania eventów kliknięcia
+clearWindowClickEvents();
+
+
+
 
 // Pobieramy elementy dla modalu i przycisk
 const modal = document.getElementById("myModal");
