@@ -1181,30 +1181,42 @@ SECTION PROJECTS
     transition: opacity 0.3s ease;
 }
 
-/* Technologie projektu */
+/* Technologie w overlay */
 .overlay .technologies {
     display: flex;
-    gap: 10px;
-    opacity: 0;  /* Początkowo ukryte technologie */
+    flex-wrap: wrap;
+    gap: 8px;
+    opacity: 0;
     transition: opacity 0.3s ease;
+    max-width: 100%;
 }
 
 .overlay .tech {
-    background-color: rgba(255, 255, 255, 0.5); /* Subtelny kolor tła dla technologii */
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;        /* Jeszcze mniejsze w overlay */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .overlay .tech:hover {
-    background-color: rgba(255, 255, 255, 0.8); /* Jaśniejsze tło po najechaniu */
+    background-color: rgba(255, 255, 255, 0.8);
     color: #333;
 }
 
-/* Po najechaniu na obrazek pokazujemy opis i technologie */
+.overlay .project-description,
+.overlay .technologies {
+    max-height: 80px;         /* ograniczamy wysokość */
+    overflow-y: auto;         /* scroll w razie potrzeby */
+    scrollbar-width: none;    /* ukryj pasek scrolla w Firefox */
+}
+
+/* Pokazujemy technologie po najechaniu */
 .image-box:hover .overlay .project-description,
 .image-box:hover .overlay .technologies {
-    opacity: 1;  /* Pokazujemy opis i technologie */
+    opacity: 1;
 }
 
 /* Tytuł projektu */
@@ -1278,15 +1290,24 @@ SECTION PROJECTS
 /* Technologie */
 .technologies {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;         /* Zawijanie elementów */
+    gap: 8px;
     margin-top: 10px;
 }
 
 .technologies .tech {
     background-color: #f0f0f0;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 4px 8px;         /* Mniejsze paddingi */
+    border-radius: 4px;
+    font-size: 0.85rem;       /* Zmniejszony rozmiar czcionki */
+    max-width: 100%;
+    white-space: nowrap;      /* Nie łamie się w środku */
+    overflow: hidden;
+    text-overflow: ellipsis;  /* Jeśli coś jest za długie, doda "…" */
+}
+
+.technologies .tech:hover {
+    background-color: #ddd;
 }
 
 .technologies .tech:hover {
@@ -1319,10 +1340,11 @@ SECTION PROJECTS
     }
 }
 
-/* Ustawienia dla mniejszych ekranów (responsive) */
+/* 📱 Ekrany do 768px */
 @media (max-width: 768px) {
     .projects-container.content {
         gap: 15px;
+        padding: 0 10px;
     }
 
     .image-box {
@@ -1336,8 +1358,114 @@ SECTION PROJECTS
 
     .text-container .section-description {
         font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .overlay .project-description {
+        font-size: 0.8rem;
+    }
+
+    .technologies .tech,
+    .overlay .tech {
+        font-size: 0.5rem;
+        padding: 1.5px 4px;
     }
 }
+
+/* 📱 Ekrany do 600px */
+@media (max-width: 600px) {
+    .image-box {
+        width: 180px;
+        height: 200px;
+    }
+
+    .project-title {
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+
+    .overlay .project-description,
+    .overlay .technologies {
+        max-height: 80px;
+        font-size: 0.7rem;
+    }
+
+    .overlay .tech {
+        font-size: 0.45rem;
+        padding: 1px 3px;
+    }
+}
+
+/* 📱 Ekrany do 500px */
+@media (max-width: 500px) {
+    .image-box {
+        width: 160px;
+        height: 190px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .overlay {
+        padding: 6px;
+    }
+
+    .overlay .project-description,
+    .overlay .technologies {
+        max-height: 60px;       /* jeszcze mniejsza przestrzeń na mobile */
+        font-size: 0.5rem;
+    }
+
+    .technologies .tech,
+    .overlay .tech {
+        font-size: 0.35rem;
+        padding: 0.8px 2px;
+    }
+
+    .text-container .section-heading-2 {
+        font-size: 1.6rem;
+    }
+
+    .text-container .section-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* 📱 Ekrany do 400px */
+@media (max-width: 400px) {
+    .image-box {
+        width: 140px;
+        height: 180px;
+    }
+
+    .project-title {
+        font-size: 0.8rem;
+        padding: 4px;
+    }
+
+    .overlay {
+        padding: 5px;
+    }
+
+    .overlay .project-description,
+    .overlay .technologies {
+        max-height: 60px;
+        font-size: 0.5rem;
+    }
+
+    .overlay .tech {
+        font-size: 0.35rem;
+        padding: 0.8px 2px;
+    }
+}
+
 
 /* 
 ---- 
