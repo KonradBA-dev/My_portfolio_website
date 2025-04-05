@@ -26,9 +26,11 @@ section {
     box-sizing: border-box;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Ustawienie zawartości w kolumnie */
+    justify-content: flex-start; /* Zawartość sekcji zaczyna się od góry */
+    align-items: center; /* Wyśrodkowanie zawartości */
     background-color: #2980b9;
+    padding: 40px 0; /* Padding do góry i do dołu */
 }
 
 section::before {
@@ -41,7 +43,6 @@ section::before {
     background: rgba(0, 0, 0, 0.6);
     z-index: -1;
 }
-
 
 /* Kiedy sekcja stanie się widoczna */
 .section.visible {
@@ -68,7 +69,6 @@ section::before {
     animation: bounce 1.5s infinite;
     cursor: pointer;
 }
-
 /* 
 ---- 
 ----
@@ -862,8 +862,8 @@ SEKCJA SKILL
     position: relative;
     height: auto;
     background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png) no-repeat center center/cover;
-    overflow: hidden; 
-    padding-top: 60px; 
+    overflow: hidden;
+    padding-top: 60px;
     box-sizing: border-box;
 }
 
@@ -872,35 +872,45 @@ SEKCJA SKILL
     color: #34D399;
     text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 20px;
     margin-bottom: 40px;
     z-index: 2;
+    display: block;
+    width: 100%;
 }
+
 
 /* Kontener umiejętności */
 .skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Zmniejszenie rozmiaru umiejętności */
     gap: 30px;
     width: 100%;
+    padding: 0 20px;
     box-sizing: border-box;
-    padding: 0 10px;
+    margin-bottom: 40px;
 }
 
-/* Informacje o umiejętnościach */
+/* Styl dla umiejętności */
 .skill-information {
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     text-align: center;
-    width: 150px;
     opacity: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: transparent;
+}
+
+/* Efekty hover dla umiejętności */
+.skill-information:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Nazwa umiejętności */
 .skill-name {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Zmniejszenie rozmiaru tekstu */
     font-weight: bold;
     text-align: center;
     color: transparent;
@@ -917,15 +927,15 @@ SEKCJA SKILL
     background: linear-gradient(20deg, #34D399, #8B5CF6);
     -webkit-background-clip: text;
     background-clip: text;
-    text-shadow: 0 0 15px #34D399, 0 0 25px #34D399; /* Podświetlenie przy hover */
+    text-shadow: 0 0 15px #34D399, 0 0 25px #34D399;
 }
 
-/* Ikony z animacją pulsowania (zmniejszenie częstotliwości animacji) */
+/* Ikony z animacją pulsowania */
 .fa-beat {
     color: #34D399;
-    font-size: 2rem;
+    font-size: 2.5rem;
     max-width: 100%;
-    animation: pulseIcon 1.5s ease-in-out infinite; /* Dodajemy pulsowanie tylko dla ikon */
+    animation: pulseIcon 1.5s ease-in-out infinite;
 }
 
 /* Ikona na hover */
@@ -944,7 +954,7 @@ progress {
 }
 
 progress::-webkit-progress-value {
-    background-color: #61d334; /* Zielony dla wysokich wartości */
+    background-color: #61d334;
     border-radius: 5px;
 }
 
@@ -994,25 +1004,26 @@ progress[value="60"]::-webkit-progress-value {
 /* Media queries dla responsywności */
 @media (max-width: 768px) {
     .section-heading {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         padding: 15px;
-    }
-
-    .skill-information {
-        width: 120px;
-        padding: 15px;
-    }
-
-    .skill-name {
-        font-size: 1.1rem;
     }
 
     .skills-container {
         gap: 20px;
+        padding: 0 10px;
+    }
+
+    .skill-information {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .skill-name {
+        font-size: 1.2rem;
     }
 
     .fa-beat {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
     }
 
     progress {
@@ -1022,11 +1033,16 @@ progress[value="60"]::-webkit-progress-value {
 
 @media (max-width: 480px) {
     .section-heading {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+    }
+
+    .skills-container {
+        gap: 15px;
+        padding: 0 5px;
     }
 
     .skill-information {
-        width: 100px;
+        width: 100%;
         padding: 10px;
     }
 
@@ -1034,18 +1050,15 @@ progress[value="60"]::-webkit-progress-value {
         font-size: 1rem;
     }
 
-    .skills-container {
-        gap: 15px;
-    }
-
     .fa-beat {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
 
     progress {
         height: 8px;
     }
 }
+
 
 /* 
 ---- 
@@ -1062,6 +1075,7 @@ SECTION PROJECTS
 ----
 ----
 */ 
+
 /* Sekcja projektów */
 #project-section {
     position: relative;
@@ -1325,16 +1339,19 @@ SECTION PROJECTS
     }
 }
 
-
-
-
-/* KONIEC SECTION PROJECTS
+/* 
+---- 
+----
+KONIEC SECTION PROJECTS
 ----
 ----
 */ 
 
 
-/* SECTION CONTACT
+/* 
+---- 
+----
+SECTION CONTACT
 ----
 ----
 */ 
@@ -1578,9 +1595,10 @@ SECTION PROJECTS
     transform: scale(1.1);
 }
 
-
 /* 
+---- 
+----
 KONIEC SECTION CONTACT
 ----
 ----
-*/
+*/ 

@@ -324,7 +324,12 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//
+//
 // PROJECT SECTION
+//
+//
+
 // Funkcja rozwijania nakładki
 function expandOverlay(element) {
     const overlay = element.querySelector('.overlay');
@@ -352,3 +357,4 @@ document.querySelectorAll('.image-box').forEach(box => {
     box.addEventListener('mouseenter', () => expandOverlay(box));
     box.addEventListener('mouseleave', () => shrinkOverlay(box));
 });
+
