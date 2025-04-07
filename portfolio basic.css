@@ -12,12 +12,31 @@ body {
     line-height: 1.6; 
 }
 
-html {
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    overflow-x: hidden; /* Blokuje przewijanie w poziomie */
+/* === DARK MODE === */
+body.dark-mode {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark-mode .section,
+body.dark-mode #intro-section,
+body.dark-mode #project-section,
+body.dark-mode #skills-section {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .modal-content,
+body.dark-mode .modal-content-section-about {
+  background-color: #1e1e2f;
+  color: #f3f3f3;
+}
+
+body.dark-mode .tech,
+body.dark-mode .overlay {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
 }
 
 /* Sekcje */
@@ -176,19 +195,38 @@ NAVBAR
     height: 4px;
     width: 100%;
     background-color: #fafafa;
-}
-
-/* Media query dla małych ekranów */
-@media (max-width: 768px) {
-    #navbar ul {
-        display: none; /* Ukrywamy menu domyślnie */
-        position: sticky;
-        left: 0;
-        width: 100%;
-        padding: 0;
-        text-align: center;
-        list-style: none;
-        z-index: 10;
+    margin: 3px 0;
+    transition: 0.3s ease;
+  }
+  
+  /* === TOGGLE MOTYWU === */
+  .theme-icon-toggle {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 9999;
+    color: #fbbf24;
+    transition: color 0.3s ease;
+  }
+  
+  body.dark-mode .theme-icon-toggle {
+    color: #60a5fa;
+  }
+  
+  .theme-icon-toggle:hover::after,
+  .theme-icon-toggle:hover::before {
+    opacity: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-icon {
+      display: flex;
+      font-size: 1.8rem;
+      color: #fafafa;
+      cursor: pointer;
+      z-index: 1002;
     }
 
     #navbar ul li {

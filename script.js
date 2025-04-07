@@ -65,7 +65,50 @@ function generateDots(num) {
     }
 }
 
-// Funkcja efektu pisania dla intro typing text
+// Przełącznik motywu
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+
+  const isDark = document.body.classList.contains('dark-mode');
+
+  // Zmiana ikony i koloru
+  themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+  themeIcon.style.color = isDark ? '#fbbf24' : '#60a5fa';
+
+  // Aktualizacja tekstów dostępności
+  themeToggle.setAttribute(
+    'aria-label',
+    isDark ? 'Włącz tryb dzienny' : 'Włącz tryb nocny'
+  );
+  themeToggle.setAttribute(
+    'title',
+    isDark ? 'Włącz tryb dzienny' : 'Włącz tryb nocny'
+  );
+
+  // Zapamiętanie trybu
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Przy ładowaniu strony
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const isDark = savedTheme === 'dark';
+
+  if (isDark) {
+    document.body.classList.add('dark-mode');
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+    themeIcon.style.color = '#fbbf24';
+    themeToggle.setAttribute('aria-label', 'Włącz tryb dzienny');
+    themeToggle.setAttribute('title', 'Włącz tryb dzienny');
+  } else {
+    themeIcon.style.color = '#60a5fa';
+    themeToggle.setAttribute('aria-label', 'Włącz tryb nocny');
+    themeToggle.setAttribute('title', 'Włącz tryb nocny');
+  }
+});
 
 // Teksty do pisania
 const strings = ["Web Developer", "Frontend Developer", "Backend Developer", "Fullstack Developer"];
