@@ -300,11 +300,28 @@ window.onclick = function(event) {
 
 // Toggle navbar visibility when clicking the hamburger menu
 
+// Menu icon
 const menuIcon = document.getElementById('menu-icon');
 const navLinks = document.getElementById('nav-links');
+const icon = menuIcon.querySelector('i');
 
 menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active'); // Przełączamy widoczność menu na mobilnym ekranie
+  navLinks.classList.toggle('active');
+
+  // Zmień ikonę
+  if (navLinks.classList.contains('active')) {
+    icon.classList.replace('fa-bars', 'fa-times');
+  } else {
+    icon.classList.replace('fa-times', 'fa-bars');
+  }
+});
+
+// Zamykanie po kliknięciu linku
+document.querySelectorAll('#nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    icon.classList.replace('fa-times', 'fa-bars');
+  });
 });
 
 // Pokazuje przycisk, gdy przewinięto stronę o 200px
