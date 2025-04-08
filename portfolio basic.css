@@ -781,12 +781,10 @@ SEKCJA ABOUT
 
 /* Title */
 .modal-content-section-about h2 {
-    font-size: 2.5rem;
-    color: #34D399;
+    font-size: 3rem;
     margin-bottom: 20px;
     animation: none; /* Usunięcie animacji */
     font-weight: 700;
-    text-shadow: 0 0 10px #00B5D6, 0 0 20px #8A2BE2; /* Colorful shadow */
 }
 
 /* List of skills */
@@ -906,18 +904,15 @@ SEKCJA SKILL
 #skills-section {
     position: relative;
     height: auto;
-    background: url(./Images/06abecb4-0ba4-4023-8aca-b2a802d8854f.png) no-repeat center center/cover;
     overflow: hidden;
     padding-top: 60px;
     box-sizing: border-box;
 }
 
 /* Nagłówek sekcji */
-.section-heading {
-    color: #34D399;
-    text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6;
+.section-heading h2 {
+    font-size: 3rem;
     text-align: center;
-    font-size: 2.5rem;
     padding: 20px;
     margin-bottom: 40px;
     z-index: 2;
@@ -1139,22 +1134,16 @@ SECTION PROJECTS
 }
 
 /* Tytuł sekcji */
-.text-container .section-heading-2 {
-    font-size: 2.5rem;
-    font-weight: bold;
+#project-section .section-heading-2 {
     margin-bottom: 10px;
-    text-transform: uppercase;
-    color: #34D399; /* Zielony kolor tytułu */
-    background: linear-gradient(90deg, #34D399, #00B5D6); /* Gradient tła */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
 }
 
 /* Opis sekcji */
 .text-container .section-description {
     font-size: 1.2rem;
     line-height: 1.6;
-    color: #555;
+    color: #dcdcdc;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -1165,10 +1154,10 @@ SECTION PROJECTS
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    align-items: flex-start;
+    align-items:start;
     padding: 10px;
     width: 100%;
-    max-width: 1200px; /* Możesz zmienić szerokość kontenera, aby dopasować do strony */
+    max-width: 1500px; /* Możesz zmienić szerokość kontenera, aby dopasować do strony */
 }
 
 /* Karta projektu */
@@ -1206,7 +1195,7 @@ SECTION PROJECTS
     justify-content: center;
     align-items: center;
     padding: 10px;
-    color: white;
+    color: #dcdcdc;
     text-align: center;
     overflow: hidden; /* Ukrywanie nadmiaru */
     opacity: 0;  /* Początkowo ukryta nakładka */
@@ -1219,41 +1208,16 @@ SECTION PROJECTS
 }
 
 /* Opis projektu */
-.overlay .project-description {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+.project-description {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
     opacity: 0;  /* Początkowo ukryty opis */
     transition: opacity 0.3s ease;
 }
 
-/* Technologie w overlay */
-.overlay .technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    max-width: 100%;
-}
-
-.overlay .tech {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;        /* Jeszcze mniejsze w overlay */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.overlay .tech:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #333;
-}
-
-.overlay .project-description,
-.overlay .technologies {
-    max-height: 80px;         /* ograniczamy wysokość */
+.project-description,
+.technologies {
+    max-height: 100px;         /* ograniczamy wysokość */
     overflow-y: auto;         /* scroll w razie potrzeby */
     scrollbar-width: none;    /* ukryj pasek scrolla w Firefox */
 }
@@ -1290,73 +1254,133 @@ SECTION PROJECTS
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Subtelniejszy cień */
 }
 
-/* Modal container */
+/* Modal główny */
 .modal-project {
-    display: none;  /* Początkowo ukryty */
-    position: fixed;  /* Modal w pozycji stałej */
-    z-index: 9999;  /* Wysoki priorytet, aby modal był na wierzchu */
+    display: none;
+    position: fixed;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);  /* Przezroczyste tło */
-    overflow: auto;  /* Zawartość modalu może być przewijana */
-    transition: opacity 0.5s ease, visibility 0s 0.5s;
-}
-
-/* Modal content */
-.modal-content {
-    position: relative;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+  
+  /* Kontener modala */
+  .modal-content {
+    background: linear-gradient(135deg, #090645, #2a1a6b);
     margin: 5% auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 800px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    animation: slideIn 0.5s ease-out;  /* Animacja wchodzenia */
-}
-
-/* Tytuł modalu */
-.modal-content h2 {
-    font-size: 2rem;
-    color: #333;
-}
-
-/* Modal image */
-.modal-content img {
+    padding: 30px;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #3700ff, 0 0 40px #00ce82;
+    color: #fff;
+    line-height: 1.8;
+    text-align: center;
+  }
+  
+  /* Tytuł projektu */
+  .modal-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  /* Obraz projektu */
+  .modal-images img {
     width: 100%;
-    height: auto;
-    max-height: 300px;
-    border-radius: 10px;
-    object-fit: cover;
-}
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00ce82;
+    margin-bottom: 20px;
+  }
+  
+  /* Opis */
+  .modal-description {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+  }
+  
+  /* Technologie (badge style) */
+  .modal-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .modal-technologies .tech {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #00ce82;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #fff;
+  }
+  
+  /* Linki do demo i GitHub */
+  .modal-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .modal-btn {
+    background-color: #00ce82;
+    color: #090645;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-btn:hover {
+    background-color: #00b176;
+  }
+  
+  .modal-btn.github {
+    background-color: #ffffff;
+    color: #2a1a6b;
+  }
+  
+  .modal-btn.github:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Wideo */
+  .modal-video iframe {
+    border-radius: 12px;
+    box-shadow: 0 0 15px #3700ff;
+  }
 
 /* Technologie */
 .technologies {
     display: flex;
-    flex-wrap: wrap;         /* Zawijanie elementów */
+    flex-wrap: wrap;
     gap: 8px;
-    margin-top: 10px;
-}
-
-.technologies .tech {
-    background-color: #f0f0f0;
-    padding: 4px 8px;         /* Mniejsze paddingi */
-    border-radius: 4px;
-    font-size: 0.85rem;       /* Zmniejszony rozmiar czcionki */
+    opacity: 0;
+    transition: opacity 0.3s ease;
     max-width: 100%;
-    white-space: nowrap;      /* Nie łamie się w środku */
+}
+
+.tech {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: #222;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;  /* Jeśli coś jest za długie, doda "…" */
+    text-overflow: ellipsis;
 }
 
-.technologies .tech:hover {
-    background-color: #ddd;
-}
 
 .technologies .tech:hover {
-    background-color: #ddd;
+    color: white;
 }
 
 /* Close button */
@@ -1535,8 +1559,6 @@ SECTION CONTACT
     position: relative;
     padding: 80px 20px;
     animation: slideInFromBottom 1s ease-out;
-    height: 100vh;
-    background: url(./Images/background_contact_section.png) no-repeat center center/cover;
 }
 
 /* Animacja sekcji - wjeżdżanie od dołu */
@@ -1551,15 +1573,10 @@ SECTION CONTACT
     }
 }
 
-.section-heading-3 {
+#contact-section .section-heading-3 {
     font-size: 3rem;
-    color: white; /* Ciemny kolor dla nagłówka */
     margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
     opacity: 0;
-    animation: bounceIn 1s ease-out 0.5s forwards;
 }
 
 /* Nagłówek */

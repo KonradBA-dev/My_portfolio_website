@@ -213,92 +213,34 @@ window.addEventListener('scroll', () => {
     handleScroll();
 });
 
-// Funkcja do otwierania modalu
-function openModal(title, imageSrc, description, link, technologies, fullDescription, videoUrl) {
-    const modal = document.getElementById("project-modal");
-    const modalTitle = modal.querySelector("#modal-title");
-    const modalImage = modal.querySelector("#modal-image");
-    const modalDescription = modal.querySelector("#modal-description");
-    const modalTechnologies = modal.querySelector("#modal-technologies");
-    const modalVideo = modal.querySelector("#modal-video");
-
-    // Ustawienie tytułu, obrazu, opisu i technologii w modalu
-    modalTitle.textContent = title;
-    modalImage.src = imageSrc;
-    modalDescription.textContent = fullDescription;
-    modalTechnologies.innerHTML = technologies.map(tech => `<span class="tech">${tech}</span>`).join(' ');
-
-    // Ustawienie linku, jeżeli istnieje
-    if (link) {
-        modal.querySelector("#modal-link").href = link;
-    }
-
-    // Ustawienie linku do video
-    modalVideo.src = videoUrl;
-
-    // Pokazanie modalu
-    modal.style.display = "block";  // Modal staje się widoczny
-    modal.style.opacity = 1;  // Zmiana przezroczystości
-    modal.style.visibility = "visible";  // Modal jest widoczny
-}
-
-// Funkcja zamykająca modal
-function closeModal() {
-    const modal = document.getElementById("project-modal");
-    modal.style.display = "none";  // Ukrycie modalu
-    modal.style.opacity = 0;  // Zanik przezroczystości
-    modal.style.visibility = "hidden";  // Ukrywanie modalu
-}
-
-// Zamykanie modalu po kliknięciu poza nim
-window.addEventListener("click", function(event) {
-    const modal = document.getElementById("project-modal");
-    // Sprawdzamy, czy kliknięto poza modalem
-    if (event.target === modal) {
-        closeModal();
-    }
-});
-
-// Nasłuchiwacz dla przycisku zamknięcia
-document.querySelector('.close').addEventListener('click', closeModal);
-
-// Sprawdzamy, czy mamy konflikt z innymi funkcjami
-function clearWindowClickEvents() {
-    // Sprawdzamy, czy przypadkowo nie nadpisujemy innych funkcji
-    if (typeof window.onclick !== 'function') {
-        window.onclick = function() {};
-    }
-}
-
-// Uruchamiamy funkcję do sprawdzania eventów kliknięcia
-clearWindowClickEvents();
-
-
-
-
 // Pobieramy elementy dla modalu i przycisk
 const modal = document.getElementById("myModal");
 const btn = document.getElementById("moreAboutMeBtn");
 const span = document.getElementsByClassName("close-section-about")[0];
 
 // Otwieramy modalne okno kiedy użytkownik kliknie w przycisk
-btn.onclick = function() {
-    modal.style.display = "block";
+if (btn && modal) {
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
 }
 
-// Zamykamy modalne okno kiedy użytkownik kliknie w przycisk dla <span> (x)
-span.onclick = function() {
-    modal.style.display = "none";
+// Zamykamy modalne okno kiedy użytkownik kliknie w <span> (X)
+if (span && modal) {
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
 }
 
-// Zamykamy modalne okno kiedy użytkownik kliknie gdziekolwiek poza modalnym oknem
-window.onclick = function(event) {
-    if (event.target == modal) {
+// Zamykamy modalne okno kiedy użytkownik kliknie poza modal-content
+window.addEventListener("click", function (event) {
+    if (event.target === modal) {
         modal.style.display = "none";
     }
 }
 
 // Toggle navbar visibility when clicking the hamburger menu
+});
 
 // Menu icon
 const menuIcon = document.getElementById('menu-icon');
@@ -418,3 +360,46 @@ document.querySelectorAll('.image-box').forEach(box => {
     box.addEventListener('mouseleave', () => shrinkOverlay(box));
 });
 
+function openModal(title, imageSrc, description, link, technologies, fullDescription, videoURL) {
+    // Ustawianie danych w modalu
+    document.getElementById("modal-title").textContent = title;
+    document.getElementById("modal-image").src = imageSrc;
+    document.getElementById("modal-description").textContent = fullDescription;
+    document.getElementById("modal-link").href = link;
+    document.getElementById("modal-video").src = videoURL;
+  
+    // Wstawianie technologii dynamicznie
+    const techContainer = document.querySelector(".modal-technologies");
+    techContainer.innerHTML = ""; // Czyścimy zawartość
+  
+    technologies.forEach(tech => {
+      const span = document.createElement("span");
+      span.classList.add("tech");
+      span.textContent = tech;
+      techContainer.appendChild(span);
+    });
+  
+    // Wyświetlenie modala
+    document.getElementById("project-modal").style.display = "block";
+}
+  
+// Zamknięcie modala
+function closeModal() {
+    document.getElementById("project-modal").style.display = "none";
+    document.getElementById("modal-video").src = ""; // Resetujemy video przy zamknięciu
+}
+  
+
+// Zamykanie modalu po kliknięciu poza nim
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("project-modal");
+    // Sprawdzamy, czy kliknięto poza modalem
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+const closeBtn = document.querySelector('.close');
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+}
