@@ -237,9 +237,6 @@ window.addEventListener("click", function (event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
-}
-
-// Toggle navbar visibility when clicking the hamburger menu
 });
 
 // Menu icon
@@ -281,50 +278,48 @@ document.getElementById('scroll-to-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Funkcja dla animacji wejścia h1, h2, h3, p, .highlight i social-links
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', () => {
     let delay = 0;
 
+    const h1 = document.getElementById('h1');
+    const h2 = document.getElementById('h2');
+    const h3 = document.getElementById('h3');
+    const p = document.getElementById('p');
+    const span = document.querySelector('.highlight');
+    const socialLinks = document.querySelector('.social-links');
+
     // Funkcja animująca elementy
-    function animateElement(element, delay) {
+    function animateElement(element, delay, direction = 'up') {
+        if (!element) return;
+
+        // Dodaj klasę kierunku (fade-in-up / left / right)
+        element.classList.add(`fade-in-${direction}`);
+
+        // Po czasie dodaj klasę visible
         setTimeout(() => {
             element.classList.add('visible');
         }, delay);
     }
 
-    // Pobieramy elementy
-    const h1 = document.querySelector('h1');
-    const h2 = document.querySelector('h2');
-    const h3 = document.querySelector('h3');
-    const p = document.querySelector('p');
-    const span = document.querySelector('.highlight');
-    const socialLinks = document.querySelector('.social-links');
-
-    // Animacja elementów z opóźnieniem
-    animateElement(h1, delay);
-    delay += 1000; // Opóźnienie po każdym elemencie
-    animateElement(h2, delay);
-    delay += 1000;
-    animateElement(h3, delay);
-    delay += 1000;
-    animateElement(p, delay);
-    delay += 1000;
-    animateElement(span, delay);
-    delay += 1000;
-    animateElement(socialLinks, delay);
-});
-
-// Funkcja dla animacji wejścia navlink
-window.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('#nav-links li'); // Pobieramy wszystkie elementy li w navbarze
+    // --- ANIMACJA NAVBARU ---
+    const navLinks = document.querySelectorAll('#nav-links li');
     
-    // Iterujemy przez linki i dodajemy klasę 'show' po określonym czasie
     navLinks.forEach((link, index) => {
         setTimeout(() => {
-            link.classList.add('show'); // Dodajemy klasę, aby uruchomić animację
-        }, index * 200); // Każdy link pojawia się po opóźnieniu 300ms od poprzedniego
+            link.classList.add('show');
+        }, delay + index * 200);
     });
+    
+    // --- ANIMACJA INTRO Z RÓŻNYCH STRON---
+    animateElement(h1, delay, 'up'); delay += 500;
+    animateElement(h2, delay, 'left'); delay += 600;
+    animateElement(h3, delay, 'right'); delay += 600;
+    animateElement(p, delay, 'up'); delay += 600;
+    animateElement(span, delay, 'up'); delay += 100;
+    animateElement(socialLinks, delay, 'up'); delay += 300;
+
 });
+
 
 //
 //
@@ -336,22 +331,18 @@ window.addEventListener('DOMContentLoaded', () => {
 function expandOverlay(element) {
     const overlay = element.querySelector('.overlay');
     const description = overlay.querySelector('.project-description');
-    const technologies = overlay.querySelector('.technologies');
 
     overlay.style.height = '100%';  // Rozszerzenie nakładki
     description.style.opacity = '1';  // Pokazanie opisu
-    technologies.style.opacity = '1';  // Pokazanie technologii
 }
 
 // Funkcja zwijania nakładki
 function shrinkOverlay(element) {
     const overlay = element.querySelector('.overlay');
     const description = overlay.querySelector('.project-description');
-    const technologies = overlay.querySelector('.technologies');
 
     overlay.style.height = '0';  // Zmniejszenie wysokości nakładki
     description.style.opacity = '0';  // Ukrycie opisu
-    technologies.style.opacity = '0';  // Ukrycie technologii
 }
 
 // Dodajemy nasłuchiwacze zdarzeń do każdego image-box

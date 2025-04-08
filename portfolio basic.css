@@ -15,7 +15,6 @@ html {
 /* Styl dla całej strony */
 body {
     height: 100%;
-    font-family: 'Roboto', sans-serif; /* Jeden typ czcionki dla całej strony */
     line-height: 1.6; 
     background-color: #f0f0f0;
     color: #222;
@@ -320,95 +319,36 @@ SEKCJA INTRO
     max-width: 50%;
 }
 
-/* Początkowo ukryte elementy */
-.hidden {
+/* Bazowy stan początkowy */
+.hidden,
+.fade-in-up,
+.fade-in-left,
+.fade-in-right {
     opacity: 0;
-    transform: translateY(50px); /* Elementy poza ekranem */
 }
 
-/* Animacje pojawiania się elementów */
+/* Kierunki animacji */
+.fade-in-up {
+    transform: translateY(50px);
+}
+
+.fade-in-left {
+    transform: translateX(-50px);
+}
+
+.fade-in-right {
+    transform: translateX(50px);
+}
+
+/* Widoczne elementy */
 .visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0);
     transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Animacje wejścia dla różnych elementów */
-h1 {
-    animation: fadeInUp 1s ease-in-out forwards;
-    animation-delay: 0s; /* Pojawia się na początku */
-}
-
-h2 {
-    animation: fadeInLeft 1s ease-in-out forwards;
-    animation-delay: 0.5s; /* Pojawia się później */
-}
-
-h3 {
-    animation: fadeInRight 1s ease-in-out forwards;
-    animation-delay: 1s; /* Pojawia się później */
-}
-
-p {
-    animation: fadeInUp 1s ease-in-out forwards;
-    animation-delay: 1.5s; /* Pojawia się ostatnia z tych elementów */
-}
-
-/* Animacja pojawiania się z dołu */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Animacja pojawiania się z lewej */
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Animacja pojawiania się z prawej */
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Animacja dla .social-links (później) */
-@keyframes fadeInSocialLinks {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.social-links {
-    animation: fadeInSocialLinks 1s ease-in-out forwards;
-    animation-delay: 2s; /* Pojawia się po h1, h2, h3, p */
-}
 
 @keyframes highlightText {
-
     50% {
         box-shadow: 0 0 10px 5px #50e3c2;  /* Dodanie poświaty w połowie animacji */
     }
@@ -430,22 +370,11 @@ p {
     color: #50e3c2;
   }
 
-  
-  @keyframes blink {
-    50% {
-      border-color: transparent;
-    }
-  }
 
 .text-content h1 {
     position: relative;
     opacity: 0;
-    animation: fadeInUp 1s ease-out forwards, rotateGradient 4s linear infinite, oscillate 1s ease-in-out infinite;
-    background: linear-gradient(to bottom, #34D399 50%, #50e3c2  50%);
-    -webkit-background-clip: text;
-    color: transparent; /* Kolor tekstu jest transparentny, aby gradient był widoczny */
     font-size: 3.5rem;
-    font-family: 'Montserrat', sans-serif;
 }
 
 .text-content h2 {
@@ -482,7 +411,7 @@ p {
     margin-right: 15px;
     color: #fff;
     font-size: 1.8rem;
-    transition: color 0.3s ease;
+    transition: color 0.4s ease;
 }
 
 .social-links a:hover {
@@ -558,17 +487,7 @@ p {
       transform: scale(0.5) translateX(-20px) translateY(20px);
     }
 }
-  
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+
 
 /* Responsywność */
 @media (max-width: 768px) {
@@ -724,12 +643,10 @@ SEKCJA ABOUT
 }
 
 .left-side h1 {
-    font-size: 2.5rem;
-    color: #34D399;
     margin-bottom: 20px;
     animation: none; /* Usunięcie animacji */
     font-weight: 700;
-    text-shadow: 0 0 10px #00B5D6, 0 0 20px #8A2BE2; /* Colorful shadow */
+    font-size: 3rem;
 }
 
 .right-side h4 {
