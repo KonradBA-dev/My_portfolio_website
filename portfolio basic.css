@@ -20,33 +20,6 @@ body {
     color: #222;
 }
 
-/* === DARK MODE === */
-body.dark-mode {
-    background-color: #0f172a;
-    color: #e2e8f0;
-}
-
-body.dark-mode .section,
-body.dark-mode #intro-section,
-body.dark-mode #project-section,
-body.dark-mode #skills-section {
-  background-color: #1e293b;
-  color: #e2e8f0;
-}
-
-body.dark-mode .navbar,
-body.dark-mode .modal-content,
-body.dark-mode .modal-content-section-about {
-  background-color: #1e1e2f;
-  color: #f3f3f3;
-}
-
-body.dark-mode .tech,
-body.dark-mode .overlay {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #f1f5f9;
-}
-
 /* Sekcje */
 section {
     width: 100%;
@@ -80,7 +53,7 @@ section::before {
 /* Sekcja, początkowo niewidoczna */
 .section .content {
     opacity: 0; /* Zawartość jest niewidoczna */
-    transform: translateY(30px); /* Zawartość jest przesunięta w dół */
+    transform: translateY(30px); 
     transition: opacity 1s ease-out, transform 1s ease-out; /* Animacja przejścia */
 }
 
@@ -106,8 +79,25 @@ section::before {
     letter-spacing: 2px;
 }
 
-p {
-    color: rgba(255, 255, 255, 0.7);
+/* --> TRYB CIEMNY (DLA WSZYSTKICH SEKCJI) <-- */
+
+body.dark-mode {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark-mode .section,
+body.dark-mode #intro-section,
+body.dark-mode #project-section,
+body.dark-mode #skills-section {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark-mode .modal-content,
+body.dark-mode .modal-content-section-about {
+  background-color: #1e1e2f;
+  color: #f3f3f3;
 }
 
 /* 
@@ -118,161 +108,191 @@ NAVBAR
 ----
 */ 
 
-/* === GŁÓWNY NAVBAR === */
+/* Styl głównego navbaru */
 #navbar {
     margin: 0;
     padding: 0 20px;
-    width: 100%;
-    height: 60px;
-    position: sticky;
-    top: 0;
+    width: 100%; /* Pełna szerokość navbaru */
+    height: 60px; /* Wysokość navbaru */
+    position: sticky; /* Utrzymuje navbar w widoku podczas scrollowania */
+    top: 0; /* Przymocowanie navbaru do góry */
     left: 0;
-    background: linear-gradient(135deg, #090645, #2a1a6b);
-    border-bottom: 2px solid #4a2577;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* Efekt przy scrollowaniu */
-  #navbar.scrolled {
+    background: linear-gradient(135deg, #090645, #2a1a6b); /* Tło z gradientem */
+    border-bottom: 2px solid #4a2577; /* Dolna linia oddzielająca navbar */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+    z-index: 999; /* Ustawienie wyższego poziomu z-index */
+    transition: all 0.3s ease-in-out; /* Płynna animacja */
+    display: flex; /* Użycie flexbox do rozmieszczenia elementów */
+    align-items: center; 
+    justify-content: space-between; /* Rozmieszczenie elementów z zachowaniem odstępów */
+}
+
+/* Zmniejszenie wysokości navbaru po przewinięciu */
+#navbar.scrolled {
     height: 50px;
-  }
-  
-  #nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    gap: 70px; /* odstęp między linkami */
+}
+
+/* Styl dla listy linków w navbarze */
+#nav-links {
+    display: flex; /* Flexbox do rozmieszczenia linków */
+    justify-content: center; /* Wyśrodkowanie linków */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    list-style: none; /* Usunięcie markerów listy */
+    gap: 70px; /* Odstęp między linkami */
     width: 100%;
-  }
-  
-  #nav-links li a {
+}
+
+/* Styl dla linków w navbarze */
+#nav-links li a {
     margin-left: 3px;
-    color: rgba(255, 255, 255, 0.7);
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.7); 
+    opacity: 0.8; /* Przezroczystość tekstu */
     font-size: 1.2rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s ease, opacity 0.3s ease;
-  }
-  
-  .navbars.active {
-    color: #50e3c2 !important;
-    text-shadow: 0 0 10px rgba(80, 227, 194, 0.7), 0 0 20px rgba(138, 249, 241, 0.5);
-    padding: 5px 10px;
-  }
-  
-  #nav-links li a::after {
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    text-decoration: none; /* Usunięcie podkreślenia */
+    position: relative; /* Umożliwia dodanie pseudoelementów */
+    transition: color 0.3s ease, opacity 0.3s ease; /* Płynna zmiana koloru i przezroczystości */
+}
+
+/* Aktywna klasa dla linków w navbarze */
+.navbars.active {
+    color: #50e3c2 !important; /* Kolor dla aktywnych linków */
+    text-shadow: 0 0 10px rgba(80, 227, 194, 0.7), 0 0 20px rgba(138, 249, 241, 0.5); /* Efekt poświaty */
+    padding: 5px 10px; 
+}
+
+/* Pseudoelement do dodania efektu podkreślenia przy najechaniu */
+#nav-links li a::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: -5px; /* Pozycja na dole linku */
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #50e3c2, #34bfa3, #1e876a);
-    transition: width 0.3s ease-in-out;
-  }
-  
-  #nav-links li a:hover::after {
-    width: 100%;
-  }
-  
-  #nav-links li a:hover {
-    color: white;
-    opacity: 1;
-  }
-  
-  /* Animacja wejścia */
-  #nav-links li {
-    opacity: 0;
-    transform: translateX(200px);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  }
-  
-  #nav-links li.show {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  /* === HAMBURGER ICON === */
-  .menu-icon {
+    background: linear-gradient(90deg, #50e3c2, #34bfa3, #1e876a); 
+    transition: width 0.3s ease-in-out; /* Płynna zmiana szerokości */
+}
+
+/* Efekt podkreślenia przy najechaniu na link */
+#nav-links li a:hover::after {
+    width: 100%; /* Rozszerzenie podkreślenia */
+}
+
+/* Styl przycisków w navbarze przy najechaniu */
+#nav-links li a:hover {
+    color: white; 
+    opacity: 1; /* Pełna widoczność tekstu */
+}
+
+/* Animacja dla wejścia elementów w navbarze */
+#nav-links li {
+    opacity: 0; /* Początkowo elementy są niewidoczne */
+    transform: translateX(200px); /* Elementy są przesunięte poza ekran */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animacja przejścia */
+}
+
+/* Widoczne elementy po animacji */
+#nav-links li.show {
+    opacity: 1; /* Zmiana przezroczystości na pełną */
+    transform: translateX(0); /* Przesunięcie elementu na właściwą pozycję */
+}
+
+/* Styl dla ikony hamburgera (menu) */
+.menu-icon {
     display: none;
     font-size: 1.8rem;
     color: #fafafa;
-    cursor: pointer;
-  }
-  
-  .menu-icon .bar {
+    cursor: pointer; 
+}
+
+/* Styl dla pasków w ikonie hamburgera */
+.menu-icon .bar {
     height: 4px;
     width: 100%;
     background-color: #fafafa;
     margin: 3px 0;
     transition: 0.3s ease;
-  }
-  
-  /* === TOGGLE MOTYWU === */
-  .theme-icon-toggle {
+}
+
+/* Styl dla ikony przełącznika motywu */
+.theme-icon-toggle {
     position: fixed;
     top: 15px;
     right: 20px;
     font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 9999;
-    color: #fbbf24;
-    transition: color 0.3s ease;
-  }
-  
-  body.dark-mode .theme-icon-toggle {
-    color: #60a5fa;
-  }
-  
-  .theme-icon-toggle:hover::after,
-  .theme-icon-toggle:hover::before {
+    cursor: pointer; 
+    z-index: 9999; /* Wysoki priorytet, aby ikona była na wierzchu */
+    color: #fbbf24; 
+    transition: color 0.3s ease; /* Płynna zmiana koloru */
+}
+
+/* Efekt hover na ikonie przełącznika motywu */
+.theme-icon-toggle:hover::after,
+.theme-icon-toggle:hover::before {
+    opacity: 1; /* Pełna widoczność przy najechaniu */
+}
+
+/* --> TRYB CIEMNY DLA NAVBAR <-- */
+
+body.dark-mode #navbar {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border-bottom: 2px solid #2a3a56;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode #nav-links li a {
+    color: white;
+    opacity: 0.7;
+}
+
+body.dark-mode #nav-links li a:hover {
+    color: white;
     opacity: 1;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+body.dark-mode .menu-icon {
+    color: #fbbf24;
+}
+
+body.dark-mode .theme-icon-toggle {
+    color: #60a5fa;
+}
+
+@media (max-width: 768px) {
     .menu-icon {
-      display: flex;
-      font-size: 1.8rem;
-      color: #fafafa;
-      cursor: pointer;
-      z-index: 1002;
+        display: flex;
+        font-size: 1.8rem;
+        color: #fafafa;
+        cursor: pointer;
+        z-index: 1002;
     }
   
-    /* NAV-LINKS ukryte */
+    /* nav-links ukryte */
     #nav-links {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      width: 80%;
-      z-index: 1001; /* nad wszystkim, ale pod ikoną */
-      gap: 1px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        width: 80%;
+        z-index: 1001; /* nad wszystkim, ale pod ikoną */
+        gap: 1px;
     }
   
-    /* NAV-LINKS aktywne (pokazane) */
+    /* nav-links aktywne (pokazane) */
     #nav-links.active {
-      display: flex;
+        display: flex;
     }
   
     #nav-links li {
-      margin: 10px 0;
+        margin: 10px 0;
     }
   
     /* Ikona motywu – przesunięta lekko niżej */
     .theme-icon-toggle {
-      z-index: 1003;
+        z-index: 1003;
     }
-  }
+}
   
-
 /* 
 ---- 
 ----
@@ -300,12 +320,25 @@ SEKCJA INTRO
     color:rgba(255, 255, 255, 0.7);
     text-align: center;
     overflow: hidden;
-    margin: 0; /* Usuń marginesy */
-    padding: 0; /* Usuń padding */
+    margin: 0; 
+    padding: 0;
     will-change: transform;
-    background-color: #2980b9;
+    background-color: #2980b9; 
 }
 
+/* Efekt poświaty w tle sekcji */
+#intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Efekt przezroczystego tła */
+    z-index: -1;
+}
+
+/* Kontener z treścią */
 .intro-content {
     display: flex;
     justify-content: space-between;
@@ -315,11 +348,12 @@ SEKCJA INTRO
     padding: 20px;
 }
 
+/* Zawartość tekstowa */
 .text-content {
     max-width: 50%;
 }
 
-/* Bazowy stan początkowy */
+/* Bazowy stan dla ukrytych elementów (początkowa przezroczystość i animacja) */
 .hidden,
 .fade-in-up,
 .fade-in-left,
@@ -340,25 +374,20 @@ SEKCJA INTRO
     transform: translateX(50px);
 }
 
-/* Widoczne elementy */
+/* Widoczność elementów po załadowaniu */
 .visible {
     opacity: 1;
     transform: translate(0, 0);
     transition: opacity 1s ease, transform 1s ease;
 }
 
-
-@keyframes highlightText {
-    50% {
-        box-shadow: 0 0 10px 5px #50e3c2;  /* Dodanie poświaty w połowie animacji */
-    }
-}
-
+/* Animacja dla efektu podświetlania */
 .highlight {
     animation: highlightText 2s ease-in-out forwards infinite;
     animation-delay: 2s;
 }
-    
+
+/* Typowanie tekstu */
 #typing-text {
     font-size: 2rem;
     font-family: 'Courier New', Courier, monospace;
@@ -368,41 +397,46 @@ SEKCJA INTRO
     padding-right: 5px;
     animation: blink 0.7s infinite step-end;
     color: #50e3c2;
-  }
+}
 
-
+/* Nagłówek 1 */
 .text-content h1 {
     position: relative;
     opacity: 0;
     font-size: 3.5rem;
 }
 
+/* Nagłówek 2 */
 .text-content h2 {
     font-size: 2.5rem;
     font-weight: bold;
     color: #34D399;
 }
 
-/* Styl dla tekstu */
+/* Zawartość tekstowa */
 .intro-text {
     z-index: 2;
     padding: 0;
 }
 
+/* Nagłówek 3 */
 .text-content h3 {
     font-size: 1.8rem;
 }
 
+/* Podświetlenie tekstu */
 .text-content .highlight {
     color: #34D399;
 }
 
+/* Paragrafy w sekcji Intro */
 .text-content p {
     font-size: 1.2rem;
     margin-top: 10px;
     color: rgba(255, 255, 255, 0.7);
 }
 
+/* Linki społecznościowe */
 .social-links {
     margin-top: 20px;
 }
@@ -418,58 +452,74 @@ SEKCJA INTRO
     color: #34D399;
 }
 
+/* Kontener dla zdjęcia */
 .image-container {
     position: relative;
     text-align: center;
 }
 
+/* Profilowe zdjęcie */
 .profile-image {
     width: 250px;
     height: 250px;
-    border-radius: 50%;
+    border-radius: 50%; /* Określa zdjęcie jako okrągłe */
     object-fit: cover;
     overflow: hidden; /* Zapewnia, że obramowanie nie będzie wychodzić poza obraz */
     box-shadow: 
-    0 0 30px #34D399,  /* Fioletowy i błękitny z przezroczystością */
-    0 0 60px #7f69d2,  /* Złoty */
-    0 0 40px rgba(255, 0, 255, 0.4); /* Fioletowy z przezroczystością */
+        0 0 30px #34D399, 
+        0 0 60px #7f69d2, 
+        0 0 40px rgba(255, 0, 255, 0.4); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 1;  /* Upewnij się, że obrazek jest widoczny */
+    opacity: 1;
 }
 
+/* Efekt powiększenia zdjęcia na hover */
 .profile-image:hover {
     transform: scale(1.1); /* Powiększenie obrazka na hover */
     box-shadow: 
-        0 0 30px #34D399,        /* Błękitny */
-        0 0 60px #00B5D6,        /* Błękitny */
-        0 0 40px #9AFF57;       /* Limonkowy */
+        0 0 30px #34D399, 
+        0 0 60px #00B5D6, 
+        0 0 40px #9AFF57; 
 }
 
-/* Jeśli obrazek ma pozostać widoczny w tle przez cały czas, wyłączamy inne animacje */
+/* Widoczność dla zdjęcia */
 .profile-image.visible {
-    opacity: 1;  /* Upewnij się, że obrazek będzie widoczny */
+    opacity: 1;
 }
 
-/* Glow Effect */
-#intro-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: -1;
-}
-
-/* Domyślny styl dla kropek */
+/* Domyślny styl dla kropek w tle */
 .dot {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.6);
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    animation: dotAnimation 2s linear infinite;
+    animation: dotAnimation 2s linear infinite; /* Animacja dla kropek */
+}
+
+/* --> TRYB CIEMNY DLA SEKCJI INTRO <--*/
+
+body.dark-mode .text-content h3,
+body.dark-mode .text-content p {
+    color: #f1f5f9;
+}
+
+body.dark-mode .highlight {
+    color: #50e3c2;
+}
+
+body.dark-mode .social-links a {
+    color: #fff;
+}
+
+body.dark-mode .social-links a:hover {
+    color: #34D399;
+}
+
+@keyframes highlightText {
+    50% {
+        box-shadow: 0 0 10px 5px #50e3c2; 
+    }
 }
 
 /* Animacja dla kropek */
@@ -488,8 +538,6 @@ SEKCJA INTRO
     }
 }
 
-
-/* Responsywność */
 @media (max-width: 768px) {
     #intro-section {
         height: 100%;
@@ -541,16 +589,16 @@ SEKCJA ABOUT
     width: 100%;
     max-width: 1500px;
     margin: 0 auto; /* Wyśrodkowanie kontenera */
-    padding: 20px; /* Wewnętrzne odstępy dla kontenera */
+    padding: 20px; 
     background: transparent; /* Tło przezroczyste */
-    border: 5px solid rgba(255, 255, 255, 0.7);; /* Jasny border */
+    border: 5px solid rgba(255, 255, 255, 0.7); 
     border-radius: 20px; /* Zaokrąglone rogi */
     box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1); /* Cień wewnętrzny i zewnętrzny */
 }
 
 /* Styl kontenerów tekstu */
 .message {
-    padding: 20px; /* Wewnętrzne odstępy */
+    padding: 20px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacja przy hover */
     backdrop-filter: blur(10px); /* Efekt rozmycia tła */
 }
@@ -563,14 +611,210 @@ SEKCJA ABOUT
 
 /* Tekst po lewej stronie */
 .left-side p {
-    font-family: 'Playfair Display', serif; /* Nowa czcionka dla lewego tekstu */
-    font-size: 2.8rem; /* Powiększony rozmiar tekstu */
-    font-weight: bold; /* Pogrubiony tekst */
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.8rem; 
+    font-weight: bold; 
     background: linear-gradient(90deg, #34D399, #00B5D6);
     -webkit-background-clip: text; /* Wypełnienie tekstu gradientem */
     -webkit-text-fill-color: transparent; /* Ustawienie tekstu jako przezroczysty */
     opacity: 0; /* Ukrycie przed animacją */
     animation: fadeInZoom 1s forwards; /* Animacja pojawiania się z powiększeniem */
+}
+
+/* Tekst po prawej stronie */
+.right-side p {
+    font-family: 'Raleway', sans-serif; 
+    font-size: 2rem; 
+    font-weight: 500; /* Średnia grubość tekstu */
+    background: linear-gradient(90deg, #34D399, #00B5D6);
+    -webkit-background-clip: text; /* Wypełnienie tekstu gradientem */
+    -webkit-text-fill-color: transparent; /* Ustawienie tekstu jako przezroczysty */
+    opacity: 0; /* Ukrycie przed animacją */
+    animation: slideFadeIn 1.2s forwards; /* Animacja pojawiania się ze ślizgiem */
+}
+
+/* Styl dla tekstu po lewej stronie */
+.left-side, .right-side {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    width: 48%;
+}
+
+/* Nagłówek w lewej sekcji */
+.left-side h1 {
+    margin-bottom: 20px;
+    animation: none; /* Usunięcie animacji */
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+/* Nagłówek w prawej sekcji */
+.right-side h4 {
+    font-size: 1.2rem;
+    color: #8B5CF6;
+    margin-bottom: 15px;
+}
+
+/* Styl dla paragrafów w lewej i prawej sekcji */
+.left-side p, .right-side p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333; 
+    margin-bottom: 15px;
+    will-change: transform, opacity;
+}
+
+/* Styl dla widocznych elementów po załadowaniu */
+.left-side.visible, .right-side.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Styl dla przycisku 'More About Me' */
+.more-about-me-btn {
+    background-color: #34D399;
+    box-shadow: 0 0 10px #34D399;
+    color: rgba(255, 255, 255, 0.758);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover dla przycisku 'More About Me' */
+.more-about-me-btn:hover {
+    background-color: #50e3c2;
+    box-shadow: 0 0 20px #50e3c2;
+    color: white;
+}
+
+/* Generalne style dla sekcji about */
+.modal-section-about {
+    display: none; /* Początkowo ukryty */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+    padding-top: 60px;
+    text-align: center; 
+}
+
+/* Modal content */
+.modal-content-section-about {
+    animation: none;
+    background: linear-gradient(135deg, #090645, #2a1a6b); 
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 800px;
+    color: #fff; 
+    box-shadow: 0 0 20px #3700ff, 0 0 40px #00ce82; 
+    transition: all 0.3s ease; /* Gładkie przejście dla cieni */
+    line-height: 1.8;
+}
+
+/* Tytuł w modalu */
+.modal-content-section-about h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: none; 
+    font-weight: 700;
+}
+
+/* Lista umiejętności */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.skills-list li {
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.skills-list li::before {
+    content: "• ";
+    color: #34D399;
+    font-size: 1.5rem;
+}
+
+/* Tekst w modalu */
+.main-text {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* Przycisk zamykający modal */
+.close-section-about {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+/* Hover i focus na przycisku zamykającym */
+.close-section-about:hover,
+.close-section-about:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animacja dla modalu */
+.modal-content-section-about {
+    animation: fadeInModal 0.5s ease-out;
+}
+
+/* TRYB CIEMNY DLA SEKCJI ABOUT  */
+
+body.dark-mode .about-container {
+    background: rgba(255, 255, 255, 0.1); 
+    border: 5px solid rgba(255, 255, 255, 0.3); 
+}
+
+body.dark-mode .more-about-me-btn {
+    background-color: #50e3c2; 
+    box-shadow: 0 0 10px #50e3c2; 
+}
+
+body.dark-mode .more-about-me-btn:hover {
+    background-color: #34D399;
+    box-shadow: 0 0 20px #34D399;
+    color: white;
+}
+
+body.dark-mode .modal-content-section-about {
+    background: linear-gradient(135deg, #0f172a, #1e293b); 
+    box-shadow: 0 0 20px #3700ff, 0 0 40px #00ce82; 
+}
+
+body.dark-mode .modal-content-section-about h2,
+body.dark-mode .modal-content-section-about .skills-list li {
+    color: #e2e8f0; 
+}
+
+
+body.dark-mode .modal-content-section-about .close-section-about {
+    color: #ddd; 
+}
+
+body.dark-mode .modal-content-section-about .close-section-about:hover {
+    color: #fff; 
 }
 
 /* Animacja pojawiania się z powiększeniem dla tekstu po lewej stronie */
@@ -585,18 +829,6 @@ SEKCJA ABOUT
     }
 }
 
-/* Tekst po prawej stronie */
-.right-side p {
-    font-family: 'Raleway', sans-serif; /* Nowa czcionka dla prawego tekstu */
-    font-size: 2rem; /* Mniejszy rozmiar tekstu */
-    font-weight: 500; /* Średnia grubość tekstu */
-    background: linear-gradient(90deg, #34D399, #00B5D6);
-    -webkit-background-clip: text; /* Wypełnienie tekstu gradientem */
-    -webkit-text-fill-color: transparent; /* Ustawienie tekstu jako przezroczysty */
-    opacity: 0; /* Ukrycie przed animacją */
-    animation: slideFadeIn 1.2s forwards; /* Animacja pojawiania się ze ślizgiem */
-}
-
 /* Animacja pojawiania się ze ślizgiem dla tekstu po prawej stronie */
 @keyframes slideFadeIn {
     0% {
@@ -608,15 +840,6 @@ SEKCJA ABOUT
         transform: translateX(0); /* Docelowa pozycja */
     }
 }
-
-/* Styl dla tekstu po lewej stronie */
-.left-side, .right-side {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    width: 48%;
-}
-
 
 /* Animacja dla pojawiającego się tekstu po lewej stronie */
 @keyframes slideInLeft {
@@ -642,144 +865,6 @@ SEKCJA ABOUT
     }
 }
 
-.left-side h1 {
-    margin-bottom: 20px;
-    animation: none; /* Usunięcie animacji */
-    font-weight: 700;
-    font-size: 3rem;
-}
-
-.right-side h4 {
-    font-size: 1.2rem;
-    color: #8B5CF6;
-    margin-bottom: 15px;
-}
-
-.left-side p, .right-side p {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    color: #333; /* Ciemniejszy kolor tekstu dla lepszego kontrastu */
-    margin-bottom: 15px;
-    will-change: transform, opacity;
-}
-
-/* Styl dla widocznych elementów po załadowaniu */
-.left-side.visible, .right-side.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Styl dla przycisku 'More About Me' */
-.more-about-me-btn {
-    background-color: #34D399;
-    box-shadow: 0 0 10px #34D399;
-    color: rgba(255, 255, 255, 0.758);
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.more-about-me-btn:hover {
-    background-color: #50e3c2;
-    box-shadow: 0 0 20px #50e3c2;
-    color: white;
-}
-
-
-/* Modal general styles */
-.modal-section-about {
-    display: none; /* Initially hidden */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Dark background */
-    overflow: auto;
-    padding-top: 60px;
-    text-align: center; /* Center the content */
-}
-
-
-/* Modal content */
-.modal-content-section-about {
-    animation: none;
-    background: linear-gradient(135deg, #090645, #2a1a6b); /* Purple background */
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 20px; /* Rounded corners */
-    width: 80%;
-    max-width: 800px;
-    color: #fff; /* White text color for better contrast */
-    box-shadow: 0 0 20px #3700ff, 0 0 40px #00ce82; /* Violet and Blue shadows */
-    transition: all 0.3s ease; /* Smooth transition for shadows */
-    line-height: 1.8;
-}
-
-/* Title */
-.modal-content-section-about h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    animation: none; /* Usunięcie animacji */
-    font-weight: 700;
-}
-
-/* List of skills */
-.skills-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    font-size: 1.2rem;
-    line-height: 1.5;
-}
-
-.skills-list li {
-    margin-bottom: 10px;
-    color: #fff;
-    font-weight: 500;
-}
-
-.skills-list li::before {
-    content: "• ";
-    color: #34D399; /* Green bullet points */
-    font-size: 1.5rem;
-}
-
-/* Modal text */
-.main-text {
-    font-size: 1.2rem;
-    color: #dcdcdc;
-    margin-bottom: 20px;
-    text-align: justify; /* Justify text for better readability */
-    line-height: 1.6;
-    animation: none; /* Usunięcie animacji */
-}
-
-
-/* Close button */
-.close-section-about {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    float: right;
-    cursor: pointer;
-}
-
-.close-section-about:hover,
-.close-section-about:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-content-section-about {
-    animation: fadeInModal 0.5s ease-out;
-}
-
-/* Add a fade-in effect for the modal content */
 @keyframes fadeInModal {
     0% {
         opacity: 0;
@@ -793,18 +878,18 @@ SEKCJA ABOUT
 
 @media (max-width: 768px) {
     .about-container {
-        flex-direction: column; /* Układ w kolumnie dla mniejszych ekranów */
-        align-items: center; /* Wyśrodkowanie zawartości */
+        flex-direction: column;
+        align-items: center; 
         gap: 15px;
     }
 
     .left-side, .right-side {
-        width: 90%; /* Ustawienie szerokości kontenerów na mniejszych ekranach */
-        margin-bottom: 20px; /* Odstęp między sekcjami */
+        width: 90%; 
+        margin-bottom: 20px;
     }
 
     .left-side p, .right-side p {
-        font-size: 1.2rem; /* Zmniejszenie rozmiaru tekstu na małych ekranach */
+        font-size: 1.2rem; 
     }
 
     .modal-content-section-about {
@@ -841,6 +926,7 @@ SEKCJA SKILL
 ----
 */ 
 
+/* Główny kontener sekcji */
 #skills-section {
     position: relative;
     height: auto;
@@ -859,7 +945,6 @@ SEKCJA SKILL
     display: block;
     width: 100%;
 }
-
 
 /* Kontener umiejętności */
 .skills-container {
@@ -890,7 +975,7 @@ SEKCJA SKILL
 
 /* Nazwa umiejętności */
 .skill-name {
-    font-size: 1.1rem; /* Zmniejszenie rozmiaru tekstu */
+    font-size: 1.1rem; 
     font-weight: bold;
     text-align: center;
     color: transparent;
@@ -944,8 +1029,14 @@ progress::-webkit-progress-bar {
 }
 
 progress[value="60"]::-webkit-progress-value {
-    background-color: #f13207; /* Czerwony dla niskich wartości */
+    background-color: #f13207; 
     border-radius: 5px;
+}
+
+/* TRYB CIEMNY DLA SEKCJI ABOUT  */
+
+body.dark-mode .skill-information:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); 
 }
 
 /* Animacja pulsowania dla ikon */
@@ -954,7 +1045,7 @@ progress[value="60"]::-webkit-progress-value {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.1); /* Subtelniejsza animacja */
+        transform: scale(1.1);
     }
 }
 
@@ -1097,7 +1188,7 @@ SECTION PROJECTS
     align-items:start;
     padding: 10px;
     width: 100%;
-    max-width: 1500px; /* Możesz zmienić szerokość kontenera, aby dopasować do strony */
+    max-width: 1500px;
 }
 
 /* Karta projektu */
@@ -1153,13 +1244,9 @@ SECTION PROJECTS
     margin-bottom: 8px;
     opacity: 0;  /* Początkowo ukryty opis */
     transition: opacity 0.3s ease;
-}
-
-.project-description,
-.technologies {
-    max-height: 100px;         /* ograniczamy wysokość */
-    overflow-y: auto;         /* scroll w razie potrzeby */
-    scrollbar-width: none;    /* ukryj pasek scrolla w Firefox */
+    max-height: 150px;         
+    overflow-y: auto;         
+    scrollbar-width: none;  
 }
 
 /* Pokazujemy technologie po najechaniu */
@@ -1185,13 +1272,13 @@ SECTION PROJECTS
 
 /* Efekty hover */
 .image-box:hover .project-image {
-    transform: scale(1.1);
-    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3); /* Subtelniejszy cień */
+    transform: scale(1.1); 
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3); 
 }
 
 .image-box:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Subtelniejszy cień */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
 }
 
 /* Modal główny */
@@ -1204,11 +1291,11 @@ SECTION PROJECTS
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.85);
-  }
-  
-  /* Kontener modala */
-  .modal-content {
+    background-color: rgba(0, 0, 0, 0.85); 
+}
+
+/* Kontener modala */
+.modal-content {
     background: linear-gradient(135deg, #090645, #2a1a6b);
     margin: 5% auto;
     padding: 30px;
@@ -1218,57 +1305,41 @@ SECTION PROJECTS
     color: #fff;
     line-height: 1.8;
     text-align: center;
-  }
-  
-  /* Tytuł projektu */
-  .modal-content h2 {
+}
+
+/* Tytuł projektu w modalu */
+.modal-content h2 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 20px;
-  }
-  
-  /* Obraz projektu */
-  .modal-images img {
+}
+
+/* Obraz projektu w modalu */
+.modal-images img {
     width: 100%;
     border-radius: 12px;
     box-shadow: 0 0 15px #00ce82;
     margin-bottom: 20px;
-  }
-  
-  /* Opis */
-  .modal-description {
+}
+
+/* Opis w modalu */
+.modal-description {
     font-size: 1rem;
     margin-bottom: 25px;
     color: #e0e0e0;
-  }
-  
-  /* Technologie (badge style) */
-  .modal-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 25px;
-  }
-  
-  .modal-technologies .tech {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #00ce82;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    color: #fff;
-  }
-  
-  /* Linki do demo i GitHub */
-  .modal-links {
+}
+
+
+/* Linki do demo i GitHub */
+.modal-links {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
-  }
-  
-  .modal-btn {
+}
+
+/* Przycisk w modalu */
+.modal-btn {
     background-color: #00ce82;
     color: #090645;
     padding: 10px 20px;
@@ -1276,68 +1347,187 @@ SECTION PROJECTS
     font-weight: 600;
     text-decoration: none;
     transition: background-color 0.3s ease;
-  }
-  
-  .modal-btn:hover {
-    background-color: #00b176;
-  }
-  
-  .modal-btn.github {
-    background-color: #ffffff;
-    color: #2a1a6b;
-  }
-  
-  .modal-btn.github:hover {
-    background-color: #e0e0e0;
-  }
-  
-  /* Wideo */
-  .modal-video iframe {
-    border-radius: 12px;
-    box-shadow: 0 0 15px #3700ff;
-  }
-
-/* Technologie */
-.technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    max-width: 100%;
 }
 
+.modal-btn:hover {
+    background-color: #00b176;
+}
+
+/* Przycisk GitHub w modalu */
+.modal-btn.github {
+    background-color: #ffffff;
+    color: #2a1a6b;
+}
+
+.modal-btn.github:hover {
+    background-color: #e0e0e0;
+}
+
+/* Wideo w modalu */
+.modal-video iframe {
+    border-radius: 12px;
+    box-shadow: 0 0 15px #3700ff;
+}
+
+/* Technologie (badge style) */
+.modal-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+/* Technologie w modalu */
 .tech {
-  background-color: rgba(0, 0, 0, 0.08);
-  color: #222;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.08); 
+    color: #222; 
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-
-.technologies .tech:hover {
-    color: white;
+/* Technologie w modalu z dodatkowymi stylami */
+.modal-technologies .tech {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border: 1px solid #00ce82; 
+    color: #fff; 
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem; 
 }
 
-/* Close button */
+/* Hover dla wszystkich technologii w trybie jasnym */
+.tech:hover {
+    background-color: rgba(0, 0, 0, 0.15); 
+    color: white; 
+}
+
+.modal-technologies .tech:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+/* Przyciski zamknięcia w modalu */
 .close {
     position: absolute;
     top: 20px;
     right: 20px;
     font-size: 2rem;
-    color: #333;
+    color: #bbb; 
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 50%;
-    z-index: 1001; /* Upewniamy się, że przycisk jest nad innymi elementami */
+    background: rgba(0, 0, 0, 0.5); 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; /* Zaokrąglamy na 50%, żeby uzyskać koło */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Animation for modal entrance */
+/* Efekt hover dla przycisku zamknięcia */
+.close:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff; 
+}
+
+/* TRYB CIEMNY DLA SEKCJI PROJECT  */
+
+body.dark-mode .text-container .section-description {
+    color: #e2e8f0; 
+}
+
+body.dark-mode .image-box {
+    background-color: #2a3a56; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 4px 12px rgba(0, 0, 0, 0.3); 
+}
+
+body.dark-mode .overlay {
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+body.dark-mode .project-description {
+    color: #e2e8f0;
+}
+
+body.dark-mode .technologies {
+    color: #e2e8f0;
+}
+
+body.dark-mode .technologies .tech {
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #f1f5f9; 
+}
+
+body.dark-mode .tech:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #f1f5f9;
+}
+
+body.dark-mode .modal-technologies .tech:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .project-title {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: #f1f5f9; 
+}
+
+body.dark-mode .image-box:hover .project-image {
+    box-shadow: 0 8px 35px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .image-box:hover {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3); 
+}
+
+body.dark-mode .modal-project {
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+body.dark-mode .modal-content {
+    background: linear-gradient(135deg, #0f172a, #1e293b); 
+}
+
+body.dark-mode .modal-content h2 {
+    color: #e2e8f0;
+}
+
+body.dark-mode .modal-description {
+    color: #f1f5f9; 
+}
+
+body.dark-mode .modal-technologies {
+    color: #f1f5f9; 
+}
+
+body.dark-mode .modal-technologies .tech {
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #f1f5f9; 
+}
+
+body.dark-mode .modal-btn {
+    background-color: #00a86b; 
+    color: #f1f5f9; 
+}
+
+body.dark-mode .modal-btn:hover {
+    background-color: #1e3d3b; 
+}
+
+body.dark-mode .modal-btn.github {
+    background-color: #2a3a56; 
+    color: #f1f5f9; 
+}
+
+body.dark-mode .modal-btn.github:hover {
+    background-color: #4b5866; 
+}
+
 @keyframes slideIn {
     0% {
         transform: translateY(-50%);
@@ -1349,7 +1539,6 @@ SECTION PROJECTS
     }
 }
 
-/* 📱 Ekrany do 768px */
 @media (max-width: 768px) {
     .projects-container.content {
         gap: 15px;
@@ -1386,7 +1575,6 @@ SECTION PROJECTS
     }
 }
 
-/* 📱 Ekrany do 600px */
 @media (max-width: 600px) {
     .image-box {
         width: 180px;
@@ -1410,7 +1598,6 @@ SECTION PROJECTS
     }
 }
 
-/* 📱 Ekrany do 500px */
 @media (max-width: 500px) {
     .image-box {
         width: 160px;
@@ -1428,7 +1615,7 @@ SECTION PROJECTS
 
     .overlay .project-description,
     .overlay .technologies {
-        max-height: 60px;       /* jeszcze mniejsza przestrzeń na mobile */
+        max-height: 60px;     
         font-size: 0.5rem;
     }
 
@@ -1447,7 +1634,6 @@ SECTION PROJECTS
     }
 }
 
-/* 📱 Ekrany do 400px */
 @media (max-width: 400px) {
     .image-box {
         width: 140px;
