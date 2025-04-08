@@ -4,12 +4,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    height: 100%;
+    font-family: 'Roboto', sans-serif; /* Jeden typ czcionki dla całej strony */
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* Blokuje przewijanie w poziomie */
+}
 
 /* Styl dla całej strony */
 body {
     height: 100%;
     font-family: 'Roboto', sans-serif; /* Jeden typ czcionki dla całej strony */
     line-height: 1.6; 
+    background-color: #f0f0f0;
+    color: #222;
 }
 
 /* === DARK MODE === */
@@ -88,6 +97,20 @@ section::before {
     animation: bounce 1.5s infinite;
     cursor: pointer;
 }
+
+.fancy-heading {
+    background: linear-gradient(to bottom, #34D399 50%, #50e3c2  50%);
+    -webkit-background-clip: text;
+    color: transparent; /* Kolor tekstu jest transparentny, aby gradient był widoczny */
+    font-family: 'Montserrat', sans-serif;
+    animation: bounceIn 1s ease-out 0.5s forwards;
+    letter-spacing: 2px;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 /* 
 ---- 
 ----
